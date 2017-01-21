@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/main.css">
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<header>
+	<h1>Jqueryお勉強2</h1>
+</header>
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+
+		$("a[href='test1']").attr("title", "test");
+		$("a[href='test2']").attr("title", function (index, attr) {
+				return "[" + index + "]" + this.target;
+			}
+		);
+		$("a[href='test3']").attr({title: "test3", target: "_blank"});
+		$("a[href='test4']").removeAttr("title");
+		$("a[href='test5']").addClass("test");
+		
+		var w = $(".main").css("width");
+		w = parseInt(w, 10);
+		console.log(w);
+
+	
+	});
+
+</script>
+
+<article class="main">
+	<h2>属性1</h2>
+		<a href="test1">test1</a>
+		<a href="test2" target="_blank">test2</a>
+		<a href="test3">test3</a>
+		<a href="test4" title="test4">test4</a>
+		<a href="test5">test5</a>
+</article>
+
+
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+
+</body>

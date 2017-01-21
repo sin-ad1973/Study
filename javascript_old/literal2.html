@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Literal2</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	var Member = function(firstName, lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	Member.prototype = {
+		getName: function(){return this.lastName + " " +this.firstName;},
+		toString: function(){return this.lastName + this.firstName;}
+	}
+	
+	var mem = new Member("信", "小野里");
+	document.writeln(mem.getName());
+	document.writeln(mem.toString());
+	
+</script>
+</pre>
+
+</body>
+</html>

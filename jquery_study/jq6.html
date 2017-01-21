@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/main.css">
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<header>
+	<h1>Jqueryお勉強5</h1>
+</header>
+
+<style>
+
+</style>
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+
+		$("div").on("click", function() {
+			var elm = $(this).text();
+			alert(elm);
+			// alert($(this).attr("class"));
+			
+			// バブリングストップ
+			// event.stopPropagation();
+		});
+		
+		$(this).on("click", function(event) {
+			alert(event.clientX + ":" + event.clientY);
+		});
+		
+		$("li").on("click", function() {
+			var test = $(this).data("test");
+			alert(test);
+		});
+		
+	});
+
+</script>
+
+<article>
+
+<div class="xxx">
+	bubble3
+	<div class="yyy">
+		bubble2
+		<div class="zzz">
+			bubble1
+		</div>
+	</div>
+</div>
+
+<ul>
+	<li data-test="テスト1")>test1</li>
+	<li data-test="テスト2")>test2</li>
+	<li data-test="テスト3")>test3</li>
+</ul>
+
+</article>
+
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+
+</body>

@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>appendChild</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	function add(f) {
+	
+		var anchor = document.createElement("a");
+		anchor.href = f.url.value;
+		
+		var name = document.createTextNode(f.name.value);
+		anchor.appendChild(name);
+		
+		var br = document.createElement("br");
+		
+		var list = document.getElementById("list");
+		list.appendChild(anchor);
+		list.appendChild(br);
+		
+	}
+		
+</script>
+</pre>
+
+<form>
+	<label>サイト名<br/>
+	<input type="text" name="name" size="30" />
+	</label><br/>
+	
+	<label>URL:<br/>
+	<input type="text" name="url" size="50" />
+	</label><br/>
+	
+	<input type="button" value="追加" onClick="add(this.form)" />
+</form>
+
+<div id="list"></div>
+
+</body>
+</html>

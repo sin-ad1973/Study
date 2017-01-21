@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>firstChild</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	window.onload = function() {
+		var result = [];
+		
+		var s = document.getElementById("food");
+		var child = s.firstChild;
+		while(child) {
+			if (child.nodeType == 1) {
+				result.push(child.value);
+			}
+			child = child.nextSibling
+		}
+		
+		window.alert(result.join("\n"));
+	}
+	
+</script>
+</pre>
+
+<select id="food" name="food">
+	<option value="ラーメン">ラーメン</option>
+	<option value="餃子">餃子</option>
+	<option value="焼き肉">焼き肉</option>
+</select>
+
+</body>
+</html>

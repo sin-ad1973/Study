@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getElementByClassName</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	window.onload = function() {
+		var result = [];
+		
+		var list = document.getElementsByClassName("my");
+		for (var i = 0; i < list.length; i++) {
+			result.push(list.item(i).href);
+		}
+		
+		window.alert(result.join("\n"));
+		
+	}
+	
+</script>
+</pre>
+
+<a href="http://www.yahoo.co.jp" class="my">Yahoo</a><br>
+<a href="http://www.google.co.jp" class="my">Google</a><br>
+<a href="http://www.amazon.co.jp" class="my">Amazon</a><br>
+
+</body>
+</html>

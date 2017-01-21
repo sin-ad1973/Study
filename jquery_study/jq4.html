@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/main.css">
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<header>
+	<h1>Jqueryお勉強4</h1>
+</header>
+
+<style>
+
+</style>
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+	
+		$("#get_val").on("click", function() {
+			var ret = $("#myselect").val();
+			alert(ret);
+		});
+			
+		$("#get_text").on("click", function() {
+			var ret = $("#myselect option:selected").text();
+			alert(ret);
+		});
+	});
+
+</script>
+
+<article>
+
+	<form>
+		<select id="myselect">
+			<option value="">下から選択して下さい</option>
+			<option value="taro">太郎</option>
+			<option value="jiro">次郎</option>
+			<option value="hanako">花子</option>
+		</select>
+		<input type="button" value="valueを取得" id="get_val">
+		<input type="button" value="textを取得" id="get_text">
+	</form>
+			
+</article>
+
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+
+</body>

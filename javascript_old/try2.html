@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<title>try-catch2</title>
+</head>
+<body>
+
+	<pre>
+	<script type="text/javascript">
+	
+		var x = 1;
+		var y = 0;
+		
+		try {
+			if (y==0) { throw new Error('0で除算しようとしました'); }
+			var z = x/y;
+			
+		} catch(e) {
+			document.writeln(e.message);
+		} finally {
+			document.writeln("処理完了");
+		}
+	
+	</script>
+	</pre>
+	
+</body>
+</html>

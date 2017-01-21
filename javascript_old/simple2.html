@@ -1,0 +1,26 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Simple2</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	var Member = function(firstName, lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.getName = function() {
+			return this.lastName + " " + this.firstName;
+		}
+	};
+	
+	var mem = new Member("明寛", "山田");
+	document.writeln(mem.getName());
+	
+</script>
+</pre>
+
+</body>
+</html>

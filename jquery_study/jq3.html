@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--
+		<link rel="stylesheet" href="../css/main.css">
+		-->
+		
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<!--
+<header>
+	<h1>Jqueryお勉強3</h1>
+</header>
+-->
+
+<style>
+	* {
+		margin: 0;
+		border: 0;
+		padding: 0;
+	}
+	
+	#outside {
+		background-color: beige;
+		position: absolute;
+		top: 100px;
+		left: 100px;
+		width: 100px;
+		height: 100px;
+	}
+
+	#inside {
+		background-color: gold;
+		position: relative;
+		top: 30px;
+		left: 30px;
+		width: 30px;
+		height: 30px;
+	}
+	
+</style>
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+
+		var xy;
+		xy = $("#outside").offset();
+		console.log(xy);
+		
+		xy = $("#outside").position();
+		console.log(xy);
+
+		xy = $("#inside").offset();
+		console.log(xy);
+		
+		xy = $("#inside").position();
+		console.log(xy);
+
+	
+	});
+
+</script>
+
+<div id="outside">
+	<div id="inside">
+		テスト
+	</div>
+</div>
+
+<!--
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+-->
+
+</body>

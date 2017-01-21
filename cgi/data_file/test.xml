@@ -1,0 +1,18 @@
+<root>
+  <content>
+    <!-- MODEL 開始 -->
+    <item id="model" enabled="true" selected="true">
+      <sub_item id="jma_msm" enabled="true" selected="true">
+	    <element id="wind"/>
+	  </sub_item>
+      <sub_item id="ukmet" enabled="true" selected="true">
+	    <element id="wind"/>
+	  </sub_item>
+    </item>
+    <!-- PIREP 開始 -->
+    <item id="pirep" enabled="false" selected="false">
+    </item>
+  </content>
+</root>
+
+	

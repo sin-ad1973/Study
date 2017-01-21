@@ -1,0 +1,24 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>classNameStyle</title>
+	
+	<link rel="stylesheet" href="style.css">
+	
+</head>
+<body>
+
+<script type="text/javascript">
+
+	function changeStyle(elem, clazz) {
+		elem.className = clazz;
+	}
+	
+</script>
+
+<div onmouseover="changeStyle(this, 'highlight')"
+ onmouseout="changeStyle(this, 'normal')">
+ マウスを乗せると色が変わります。</div>
+ 
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=EUC-JP">
+		<title>CGI送信フォーム2</title>
+	</head>
+	<body>
+		<form method="post" action="./form_catch2.cgi">
+			<div>
+				<b>テキストボックス：</b>
+				名前
+				<input type="text" name="name" size="20" mallength="15">
+			</div>
+			<div>
+				<b>ラジオボタン：</b>
+				性別
+				<input type="radio" name="sex" value="男" checked>男
+				<input type="radio" name="sex" value="女">女
+			</div>
+			<div>
+				<b>チェックボックス：</b>
+				趣味
+				<input type="checkbox" name="hobby" value="旅行" checked>旅行
+				<input type="checkbox" name="hobby" value="ドライブ">ドライブ
+				<input type="checkbox" name="hobby" value="スポーツ">スポーツ
+			</div>
+			<div>
+				<b>コンボボックス</b>
+				職業
+				<select name="job" size=1>
+					<option value="プログラマー">プログラマー</option>
+					<option value="医者">医者</option>
+					<option value="教師">教師</option>
+				</select>
+			</div>
+			<div>
+				<b>リストボックス</b>
+				好きな食べ物
+				<select name="food" size=3 multiple>
+					<option value="ケーキ">ケーキ</option>
+					<option value="寿司">寿司</option>
+					<option value="魚">魚</option>
+				</select>
+			</div>
+			<div>
+				<b>テキストエリア</b>
+				メッセージ
+				<textarea name="message" cols=30 rows=5></textarea>
+			</div>
+			<div>
+				<b>送信ボタン</b>
+				<input type="submit" value="送信">
+			</div>
+		</form>
+	</body>
+</html>

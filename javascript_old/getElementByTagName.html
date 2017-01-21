@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getElementByTagName</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	window.onload = function() {
+		var result = [];
+		
+		var list = document.getElementsByTagName("a");
+		for (var i = 0; i < list.length; i++) {
+			result.push(list.item(i).href);
+		}
+		
+		window.alert(result.join("\n"));
+		
+	}
+	
+</script>
+</pre>
+
+<a href="http://www.yahoo.co.jp">Yahoo</a><br>
+<a href="http://www.google.co.jp">Google</a><br>
+<a href="http://www.amazon.co.jp">Amazon</a><br>
+
+</body>
+</html>

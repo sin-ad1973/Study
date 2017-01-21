@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/main.css">
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<header>
+	<h1>Jqueryお勉強5</h1>
+</header>
+
+<style>
+
+</style>
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+
+		$("li").each(function(index) {
+			var name = $(this).text();
+			
+			if (name == "orange") {
+				return;
+			}
+			
+			console.log(name);
+		});
+		
+		var elements = $("li").toArray();
+		// var elements = $("li").get();
+		// var elements = $("li")[0];
+		console.log(elements);
+		
+		$("li").on("click", function() {
+			var idx = $(this).index();
+			console.log(idx);
+		});
+		
+	});
+
+</script>
+
+<article>
+
+<ul>
+	<li>apple</li>
+	<li>orange</li>
+	<li>grape</li>
+</ul>
+
+</article>
+
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+
+</body>

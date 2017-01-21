@@ -1,0 +1,127 @@
+
+body {
+	font-family: 'Hirgino Kaku Gothic Pro', sans-serif;
+	background-color: #edede3;
+	margin:0px;
+}
+
+/*
+.box {
+	float:left;
+}
+
+.clearBox {
+	clear: both;
+}*/
+
+ul {
+	margin: 0px;
+	font-size:15px;
+	line-height: 1.5;
+	list-style: none;
+}
+
+a {
+	color: #000000;
+	font-size:12px;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ffa500;
+}
+
+div {
+	background-color: #ffffff;
+	border: solid 1px #aaaaaa;
+	border-radius: 20px;
+	width: 950px;
+	height: 550px;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 20px;
+	margin-bottom: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	
+	/* IMPORTTANT */
+	// overflow: hidden;
+	
+	display: -moz-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	
+	-ms-flex-direction: row;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+	-web-kit-justify-content: space-between;
+	justify-content: space-around;
+	-web-kit-align-content: space-between;
+	align-content: space-around;
+}
+
+header {
+	background-color: #ffa500;
+	border-bottom: solid 1px #aaaaaa;
+	margin-bottom: 30px;
+	-webkit-box-shadow: 0 1px 7px #aaaaaa;
+	-moz-box-shadow: 0 1px 7px #aaaaaa;
+	box-shadow: 0 1px 7px #aaaaaa;
+	padding: 5px;
+}
+
+footer {
+	width: 900px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	clear:both;
+}
+
+article {
+	background-color: #ffffff;
+	width: 280px;
+	padding: 30px;
+	margin-right: 0px;
+	margin-left: 0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: dotted 1px #bbbbbb;
+	border-radius: 15px;
+	-webkit-box-shadow: 1px 1px 3px #aaaaaa;
+	-moz-box-shadow: 1px 1px 3px #aaaaaa;
+	box-shadow: 1px 1px 3px #aaaaaa;
+
+	/* IMPORTTANT */
+	// float: left;
+}
+
+h1 {
+	font-size: 30px;
+	margin-top: 0;
+	margin-bottom: 0px;
+}
+
+header h1 {
+	color: #ffffff;
+	width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+article h1 {
+	border-bottom: dotted 1px #bbbbbb;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+

@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Dynamic3</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	var Member = function(firstName, lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	};
+
+	var mem = new Member("明寛", "山田");
+	
+	Member.prototype.getName = function() {
+		return this.lastName + " " + this.firstName;
+	};
+	
+	document.writeln(mem.getName());
+	
+</script>
+</pre>
+
+</body>
+</html>

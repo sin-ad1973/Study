@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/main.css">
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<header>
+	<h1>JavaScriptお勉強7</h1>
+</header>
+
+<script type="text/javascript">
+
+// DOM
+
+// 追加
+function show(e, isbn) {
+	// <img>タグ生死絵
+	var img = document.createElement('img');
+	img.src = 'http://www.wings.msn.to/books/' + isbn + '/' + isbn + '.jpg';
+	img.alt = e.innerHTML;
+	img.height = 150;
+	img.width = 108;
+	// 画像を表示するための領域取得
+	var pic = document.getElementById('pic');
+	// <div>タグ配下に<img>要素が存在するか(画像表示中か)判定
+	if (pic.getElementsByTagName('img').length > 0) {
+		// <img>要素が存在する場合、新たな<img>タグで置換
+		pic.replaceChild(img, pic.lastChild);
+	} else {
+		// <img>要素が存在しない場合、新たな<img>タグを追加し、「削除」ボタン有効化
+		document.getElementById('del').disabled = false;
+		pic.appendChild(img);
+	}
+}
+
+function del() {
+	var pic = document.getElementById('pic');
+	// <div id="pic">配下の子要素を削除し、「削除」ボタン無効化
+	pic.removeChild(pic.lastChild);
+	document.getElementById('del').disabled = true;
+}
+
+</script>
+
+<ul>
+	<li><a href="JavaScript:void(0)" onclick="show(this, '978-4-7741-4223-4')">
+		Apacheポケットリファレンス</a></li>
+	<li><a href="JavaScript:void(0)" onclick="show(this, '978-4-7741-4076-6')">
+		3ステップでしっかり学ぶMySQL入門</a></li>
+	<li><a href="JavaScript:void(0)" onclick="show(this, '978-4-8443-2879-7')">
+		改訂3版　基礎PHP</a></li>
+</ul>
+
+<input type="button" id="del" value="削除" disabled="disabled" onclick="del()"/>
+<div id="pic"></div>
+
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+
+</body><a href = "../jquery_study/jq1.html"></a>

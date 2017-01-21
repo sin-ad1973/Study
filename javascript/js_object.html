@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/main.css">
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<header>
+	<h1>JavaScriptお勉強4</h1>
+</header>
+
+<script type="text/javascript">
+
+// コンストラクタ
+document.writeln("■コンストラクタ");
+document.writeln("<br>");
+var Member = function(firstName, lastName) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.getName = function() {
+		return this.lastName + ' ' + this.firstName;
+	};
+};
+var mem = new Member('章裕', '山田');
+document.writeln(mem.getName());
+document.writeln("<br>");
+document.writeln("<br>");
+
+// プロトタイプメソッド1
+document.writeln("■プロトタイプメソッド1");
+document.writeln("<br>");
+var Member = function(firstName, lastName) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+};
+Member.prototype.getName = function() {
+		return this.lastName + ' ' + this.firstName;
+};
+var mem = new Member('章裕', '山田');
+document.writeln(mem.getName());
+document.writeln("<br>");
+document.writeln("<br>");
+
+// プロトタイプメソッド2
+document.writeln("■プロトタイプメソッド2");
+document.writeln("<br>");
+var Member = function(firstName, lastName) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+};
+Member.prototype = {
+	getName: function() {
+		return this.lastName + ' ' + this.firstName;
+	},
+	toString: function() {
+		return this.lastName + this.firstName;
+	}
+};
+var mem = new Member('章裕', '山田');
+document.writeln(mem.getName());
+document.writeln("<br>");
+document.writeln("<br>");
+
+// オブジェクト継承
+document.writeln("■オブジェクト継承");
+document.writeln("<br>");
+var Animal = function() {};
+Animal.prototype = {
+	walk: function() {
+		document.writeln('トコトコ。。。');
+	}
+};
+
+var Dog = function() {};
+Dog.prototype = new Animal();
+Dog.prototype.bark = function() {
+	document.writeln('ワンワン。。。');
+};
+
+var d = new Dog();
+d.walk();
+d.bark();
+document.writeln("<br>");
+document.writeln("<br>");
+
+// 静的プロパティ・メソッド
+document.writeln("■静的プロパティ・メソッド");
+document.writeln("<br>");
+var Area = function() {};
+Area.version = '1.0';
+Area.triangle = function(base, height) {
+	return base * height / 2;
+}
+document.writeln('三角形の面積：' + Area.triangle(5, 3));
+document.writeln("<br>");
+document.writeln("<br>");
+
+</script>
+
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+
+</body><a href = "../jquery_study/jq1.html"></a>

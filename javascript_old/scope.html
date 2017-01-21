@@ -1,0 +1,25 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Scope</title>
+</head>
+<body>
+
+<pre>
+<script type="text/javascript">
+
+	var scope = "Global Variable";
+	
+	function getValue() {
+		var scope = "Local Variable";
+		return scope;
+	}
+	
+	document.writeln(getValue());
+	document.writeln(scope);
+	
+</script>
+</pre>
+
+</body>
+</html>

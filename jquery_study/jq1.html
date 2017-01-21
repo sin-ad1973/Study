@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/main.css">
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<title>ゆるゆるパラダイス</title>
+	</head>
+<body font size="2">
+
+<header>
+	<h1>Jqueryお勉強1</h1>
+</header>
+
+<script type="text/javascript">
+
+	jQuery(function($) {
+
+		$("h2").css("font-size", "16px");
+		$(".main").css("background-color", "#ffffff").css("width", "800px").css("margin-left", "auto").css("margin-right", "auto");
+		$("li").css("color", "#0000ff");
+		$("<li>六郎</li>").appendTo("#family").css("font-weight", "bold");
+		
+		$("li:eq(2)").css("font-size", "2em");
+		
+		$("a[href='test2']").css("color", "#ff0000");
+		
+		$("#table1 *").css("border", "1px solid #000000");
+		$("#table1 tr:nth-child(2n)").css("background-color", "#ff0000");
+	
+	});
+
+</script>
+
+<article class="main">
+	<h2> セレクタ1</h2>
+		<ul id="family">
+			<li>一郎</li>
+			<li>二郎</li>
+			<li>三郎</li>
+			<li>四郎</li>
+			<li>五郎</li>
+		</ul>
+</article>
+
+<article class="main">
+	<h2> セレクタ2</h2>
+		<ul id="link">
+			<a href="test1">test1</a>
+			<a href="test2">test2</a>
+			<a href="test3">test3</a>
+		</ul>
+</article>
+
+<article class="main">
+	<h2> セレクタ3</h2>
+	<table id="table1">
+		<tr><th>見出し1</th><th>見出し2</th><th>見出し3</th><th>見出し4</th></tr>
+		<tr><td>a</td><td>b</td><td>c</td><td>d</td></tr>
+		<tr><td>a</td><td>b</td><td>c</td><td>d</td></tr>
+		<tr><td>a</td><td>b</td><td>c</td><td>d</td></tr>
+		<tr><td>a</td><td>b</td><td>c</td><td>d</td></tr>
+	</table>
+</article>
+
+<footer>
+	<small>Copyright &copy; YuruYuru Paradice, all rights reserved</small>
+</footer>
+
+</body>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		 <meta charset="UTF-8">
+		<script type="text/javascript" src="../lib/jquery.js"></script>	  
+		 <title>JSON受け取り</title>
+	</head>
+	<body>
+	
+	  <script type="text/javascript">
+
+        $(function() {	  
+	      $("#btn").click(function() {
+		    $.getJSON ('http://sin-ad1973.sakura.ne.jp/cgi/return_json.cgi', function(data){
+			  var json = eval(data);
+		    });
+		  });
+	    });
+		
+	  </script>
+		
+	  <form id="fm">
+	    <input type="button" id="btn" value="JSON生成">
+	  </form>
+	
+	</body>	
+</html>
+
+	
