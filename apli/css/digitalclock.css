@@ -1,0 +1,18 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+  paddig: 0px;
+}
+
+body {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: repeat;;
+  background-image: url("../images/img1.jpg");
+}
+
+#displayPanel {
+  font-size: 32pt;
+  text-align: center;
+  padding-top: 10px;
+}
