@@ -16,3 +16,14 @@ body {
   text-align: center;
   padding-top: 10px;
 }
+
+#controlPanel {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+input[type=file] {
+  visibility: hidden;
+  width: 1px;
+}
