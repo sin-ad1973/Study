@@ -1,0 +1,29 @@
+html, body {
+  height: 100%;
+  margin: 0px;
+  paddig: 0px;
+}
+
+body {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: repeat;;
+  background-image: url("../images/img1.jpg");
+}
+
+#displayPanel {
+  position: absolute;
+  height: 250px;
+  width: 250px;
+}
+
+#controlPanel {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+input[type=file] {
+  visibility: hidden;
+  width: 1px;
+}
