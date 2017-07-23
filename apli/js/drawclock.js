@@ -1,22 +1,31 @@
+/*
+ * アナログ時計特有の処理を行うクラス
+ */
+
 var drawClock = (function(){
 
   var canvas;
-  var hourHand;
-  var minHand;
-  var secHand;
+  var _hourHand;
+  var _minHand;
+  var _secHand;
   var diameter = 250;
   var r = diameter / 2;
 
+  /**
+   * 初期化
+   */
   function initClock(panel) {
     setStyle();
     setCanvas(panel);
-    hourHand = new Image();
-    minHand = new Image();
-    secHand = new Image();
 
-    hourHand.src = "./images/hand_hours.png";
-    minHand.src = "./images/hand_minutes.png";
-    secHand.src = "./images/hand_seconds.png";
+    _hourHand = new Image();
+    _hourHand.src = "./images/hand_hours.png";
+
+    _minHand = new Image();
+    _minHand.src = "./images/hand_minutes.png";
+
+    _secHand = new Image();
+    _secHand.src = "./images/hand_seconds.png";
 
     showTime();
   }
@@ -62,15 +71,15 @@ var drawClock = (function(){
 
     var radSec = Math.PI / 30 * sec;
     var radMin = Math.PI / 30 * min;
-    var radHour = (Math.PI / 6 * hour) * (Math.PI / (30 * 12) * min);
+    var radHour = (Math.PI / 6 * hour) + (Math.PI / (30 * 12) * min);
 
     canvas.width = diameter;
     canvas.height = diameter;
 
     var context = canvas.getContext("2d");
-    drawHand(radHour, hourHand);
-    drawHand(radMin, minHand);
-    drawHand(radSec, secHand);
+    drawHand(radHour, _hourHand);
+    drawHand(radMin, _minHand);
+    drawHand(radSec, _secHand);
     setTimeout(showTime, 1000 - date.getMilliseconds());
 
     function drawHand(rad, hand) {
@@ -82,6 +91,9 @@ var drawClock = (function(){
     }
   }
 
+  /**
+   * 時計描画
+   */
   function drawFrame(color) {
     if (!frameCanvas.getContext) return;
 

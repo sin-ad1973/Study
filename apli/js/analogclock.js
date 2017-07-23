@@ -1,6 +1,11 @@
 var displayPanel;
 var controlPanel;
 
+/**
+ * 主に基本処理を行うクラス
+ * アナログ時計特有の処理は[drawclodk.js]に委任
+ */
+
 window.onload = appInit;
 
 function appInit() {
@@ -18,12 +23,9 @@ function appInit() {
   hideControlPanel();
 }
 
-function tick() {
-  var date = new Date();
-  displayPanel.textContent = date.toLocaleTimeString();
-  setTimeout(tick, 1000 - date.getMilliseconds());
-}
-
+/**
+ * 初期化
+ */
 function initColorPicker() {
   var colorPicker = document.getElementById("colorPicker");
 
@@ -38,16 +40,31 @@ function initColorPicker() {
       colorPicker = inputColor;
     }
   }
-
   colorPicker.addEventListener("change", setColor, false);
 }
 
-function setColor(evnet) {
-  // displayPanel.style.color = event.target.value;
-  drawClock.frame(event.target.value);
-  saveData("color", event.target.value);
+/**
+ * 設定取り出し・反映
+ */
+function loadSettings() {
+  var storage = localStorage;
+  if (typeof storage == "undefined") return;
+
+  var color = storage.getItem("color") || "gray";
+  var image = storage.getItem("image");
+
+  var colorPicker = document.getElementById("colorPicker");
+  drawClock.frame(color);
+  colorPicker.value = color;
+
+  if (image) {
+    document.body.style.backgroundImage = "url('" + image + "')";
+  }
 }
 
+/**
+ * 背景画像選択ファイルピッカーイベントハンドラ
+ */
 function setBackground(event) {
   var file = event.target.files[0];
   window.URL = window.URL||window.webkitURL;
@@ -59,31 +76,22 @@ function setBackground(event) {
   fileReader.readAsDataURL(file);
 }
 
+/**
+ * カラーピッカーイベントハンドラ
+ */
+function setColor(evnet) {
+  // displayPanel.style.color = event.target.value;
+  drawClock.frame(event.target.value);
+  saveData("color", event.target.value);
+}
+
+/**
+ * ローカルストレージ保存
+ */
 function saveData(name, data) {
   var storage = localStorage;
   if (typeof storage == "undefined") return;
   storage.setItem(name, data);
-}
-
-function loadSettings() {
-  var storage = localStorage;
-  if (typeof storage == "undefined") return;
-
-  // var textColor = storage.getItem("color");
-  var color = storage.getItem("color") || "gray";
-  var image = storage.getItem("image");
-
-  // if (textColor) {
-    var colorPicker = document.getElementById("colorPicker");
-    // displayPanel.style.color = textColor;
-    drawClock.frame(color);
-    // colorPicker.value = textColor;
-    colorPicker.value = color;
-  // }
-
-  if (image) {
-    document.body.style.backgroundImage = "url('" + image + "')";
-  }
 }
 
 function hideControlPanel() {
