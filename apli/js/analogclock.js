@@ -1,5 +1,7 @@
 var displayPanel;
 var controlPanel;
+var lastX;
+var lstY;
 
 /**
  * 主に基本処理を行うクラス
@@ -19,6 +21,16 @@ function appInit() {
   var fileButton = document.getElementById("fileButton");
   filePicker.addEventListener("change", setBackground, false);
   fileButton.addEventListener("click", function(){filePicker.click()}, false);
+
+  if (typeof displayPanel.ontouchstart === "undefined") {
+    displayPanel.addEventListener("dragstart", dragStart, false);
+    displayPanel.addEventListener("dragend", dragEnd, false);
+  } else {
+    displayPanel.addEventListener("touchstart", touchStart, false);
+    displayPanel.addEventListener("touchmove", touchMove, false);
+    displayPanel.addEventListener("touchend", touchEnd, false);
+  }
+
   loadSettings();
   hideControlPanel();
 }
@@ -52,6 +64,8 @@ function loadSettings() {
 
   var color = storage.getItem("color") || "gray";
   var image = storage.getItem("image");
+  var posX = storage.getItem("PosX");
+  var posY = storage.getItem("PosY");
 
   var colorPicker = document.getElementById("colorPicker");
   drawClock.frame(color);
@@ -59,6 +73,11 @@ function loadSettings() {
 
   if (image) {
     document.body.style.backgroundImage = "url('" + image + "')";
+  }
+
+  if (posX && posY) {
+    displayPanel.style.left = posX;
+    displayPanel.style.top = posY;
   }
 }
 
@@ -84,6 +103,100 @@ function setColor(evnet) {
   drawClock.frame(event.target.value);
   saveData("color", event.target.value);
 }
+
+/**
+ * ドラッグスタートイベントハンドラ
+ */
+ function dragStart(event) {
+   lastX = event.screenX;
+   lastY = event.screenY;
+
+   // For Firefox
+   event.dataTransfer.setData("Text", this.innerHTML);
+ }
+ /**
+  * タッチスタートイベントハンドラ
+  */
+ function touchStart(event) {
+   lastX = event.touches[0].clientX;
+   lastY = event.touches[0].clientY;
+ }
+ /**
+  * タッチムーブイベントハンドラ
+  */
+  function touchMove(event) {
+    event.preventDefault();
+    var element = event.target;
+    if (element.nodeName === "CANVAS") {
+      element = element.parentNode;
+    }
+
+    var x = event.touches[0].clientX;
+    var y = event.touches[0].clientY;
+
+    moveClock(element, x, y);
+
+    lastX = x;
+    lastY = y;
+  }
+
+ /**
+  * ドラッグエンドイベントハンドラ
+  */
+  function dragEnd(event) {
+    var element = event.target;
+    var x = event.screenX;
+    var y = event.screenY;
+
+    var pos = moveClock(element, x, y);
+
+    saveData("PosX", pos.x);
+    saveData("PosY", pos.y);
+
+    lastX = null;
+    lastY = null;
+  }
+  /**
+   * タッチエンドイベントハンドラ
+   */
+   function touchEnd(event) {
+     var element = event.target;
+     if (element.nodeName === "CANVAS") {
+       element = element.parentNode;
+     }
+
+     var x = event.changedTouches[0].clientX;
+     var y = event.changedTouches[0].clientY;
+
+     var pos = moveClock(element, x, y);
+
+     saveData("PosX", pos.x);
+     saveData("PosY", pos.y);
+
+     lastX = null;
+     lastY = null;
+   }
+
+  function moveClock(element, curX, curY) {
+    var posX, posY;
+    var newX = element.offsetLeft + curX - lastX;
+    var newY = element.offsetTop + curY - lastY;
+    var maxX = document.body.clientWidth - element.offsetWidth;
+    var maxY = document.body.clientHeight - element.offsetHeight;
+
+    if (newX < 0) newX = 0;
+    if (newY < 0) newY = 0;
+    if (newX > maxX) newX = maxX;
+    if (newY > maxY) newY = maxY;
+
+    posX = newX + "px";
+    posY = newY + "px";
+
+    element.style.left = posX;
+    element.style.top = posY;
+
+    return {x:posX, y:posY};
+  }
 
 /**
  * ローカルストレージ保存
