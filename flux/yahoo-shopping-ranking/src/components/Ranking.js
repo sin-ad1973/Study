@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Card, { CardMedia, CardContent, CardActions } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 
 export default class Ranking extends React.Component {
 
@@ -15,16 +18,35 @@ export default class Ranking extends React.Component {
         } else if (typeof ranking === 'undefined') {
             return <p>読み込み中...</p>;
         } else {
-            return (
-                <ol>
-                    {ranking.map(item => (
-                        <li key={`rannking-item-${item.code}`}>
-                            <img alt={item.name} src={item.imageUrl} />
-                            <a href={item.url} target="_blank">{item.name}</a>
-                        </li>
-                    ))}
-                </ol>
-            );
+            return ranking.map((item, i) => (
+                        <Card
+                         key={`rannking-item-${item.code}`}
+                         style={{ maxWidth: '500px', margin: '32px auto' }}
+                        >
+
+                            <CardMedia
+                             image={item.imageUrl}
+                             tile={`${i + 1}位 ${item.name}`}
+                             style={{ height: '200px' }}
+                            />
+
+                            <CardContent>
+                                <Typography tyhpe="title">
+                                    {`${i + 1}位 ${item.name}`}
+                                </Typography>
+                            </CardContent>
+
+                            <CardActions>
+                                <Button
+                                 raised
+                                 color="secondary"
+                                 fullWidth
+                                 href={item.url}
+                                 target="_blank"
+                                >商品ページへ</Button>
+                            </CardActions>
+                        </Card>
+            ));
         }
     });
 

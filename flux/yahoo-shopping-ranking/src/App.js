@@ -2,15 +2,32 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Ranking from './containers/Ranking';
 import Nav from './containers/Nav';
+import Reboot from 'material-ui/Reboot';
+import AppBar from 'material-ui/AppBar';
+import ToolBar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{ paddingLeft: 240 }}>
+
+        <Reboot />
+
+        <AppBar style={{ left: 240} }>
+          <ToolBar>
+            <Typography type="title" color="inherit">
+              Yahoo! ショッピングランキング
+            </Typography>
+          </ToolBar>
+        </AppBar>
+
         {/* 差し替え */}
         <Nav />
 
+        <div style={{ marginTop: 64, padding: 32 }}>
           <Switch>
+            
             {/* 総合ランキングのルート */}
             <Route path="/all" component={Ranking} />
             <Route path="/category/1"
@@ -24,6 +41,8 @@ class App extends Component {
               }
             />
           </Switch>
+        </div>
+
       </div>
     );
   }

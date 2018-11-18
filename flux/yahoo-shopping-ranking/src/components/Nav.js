@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import Drawer from 'material-ui/Drawer';
+import List, { ListItem, ListItemText } from 'material-ui/List';
 
-export default function Nav({ categories }) {
+export default function Nav({ categories, onClick }) {
     // 遷移先パスの生成
     // - カテゴリIDが"1"の場合は/all
     // - それ以外は/category/カテゴリID
@@ -13,16 +15,20 @@ export default function Nav({ categories }) {
     );
 
     return (
-        <ul>
-            {/* props.categoriesからリンク一覧を生成 */}
-            {categories.map(category => (
-                <li key={`nav-item-${category.id}`}>
-                    <Link to={to(category)}>
-                        {category.name}
-                    </Link>
-                </li>
-            ))}
-        </ul>
+        <Drawer type="permanent">
+            <List style={{ width: 240 }}>
+                {/* props.categoriesからリンク一覧を生成 */}
+                {categories.map(category => (
+                    <ListItem
+                     button
+                     key={`menu-item-${category.id}`}
+                     onClick={() => onClick(to(category))}
+                    >
+                     <ListItemText primary={category.name} />
+                    </ListItem>
+                ))}
+            </List>
+        </Drawer>
     );
 }
 
