@@ -1,0 +1,30 @@
+li {
+    font-size: 12px;
+}
+
+.sample1 li {
+    display: inline;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border:1px solid #000000;
+    background-color: #00FFFF;
+}
+
+.sample2 li {
+    display: block;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border:1px solid #000000;
+    background-color: #FFFF00;
+}
+
+.sample3 li {
+    display: inline-block;
+    width: 200px;
+    margin: 5px;
+    padding: 5px;
+    border:1px solid #000000;
+    background-color: #FF00FF;
+}
