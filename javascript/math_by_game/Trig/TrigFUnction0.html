@@ -32,12 +32,14 @@
                 ctx.fillStyle = "white";
                 ctx.fillRect(0, 0, 600, 600);
                 ctx.save(); // コンテキストを保存
-                ctx.translate(300, 300) // (300, 300)を原点へ
+                ctx.translate(300, 300) // (300, 300)をグラフ原点(0, 0)とする
 
                 // 座標軸
-                drawLine(0, -300, 0, 300, "black");
-                drawLine(-300, 0, 300, 0, "black");
+                drawLine(0, -300, 0, 300, "black"); // Y軸
+                drawLine(-300, 0, 300, 0, "black"); // X軸
 
+                // sin(角度) * 距離(ここではイコールh半径)によりy座標が得られる
+                // cos(角度) * 距離(ここではイコールh半径)によりx座標が得られる
                 var s0 = Math.sin(degree * Math.PI / 180).toFixed(3);
                 var c0 = Math.cos(degree * Math.PI / 180).toFixed(3);
                 var s = s0 * -200;
