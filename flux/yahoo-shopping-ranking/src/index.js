@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
 import './index.css';
 import App from './App';
-import createStore from './createStore';
+import createStore from './store/createStore';
 
 const history = createBrowserHistory();
 // Storeの生成
