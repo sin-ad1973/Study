@@ -9,6 +9,7 @@
 <body>
 
     <input type="button" id="sample" value="送信">
+    <div id="result"></div>
 
     <script>
         var sock = new WebSocket('ws://127.0.0.1:5001');
@@ -20,6 +21,9 @@
 
         // サーバーからデータを受け取る
         sock.addEventListener('message',function(e){
+            var result = document.getElementById("result");
+            var text = result.innerHTML ? result.innerHTML + "<BR>" + e.data : e.data;
+            result.innerHTML = text;
             console.log(e.data);
         });
 

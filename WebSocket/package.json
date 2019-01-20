@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "startWsServer": "node wsServer.js",
-    "startWsServer2": "node wsServer2.js"
+    "startWsServer2": "node wsServer2.js",
+    "startWsServer3": "node wsServer3.js"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
