@@ -1,4 +1,4 @@
-def fizz_buxx(n)
+def fizz_buzz(n)
     if (n % 15 == 0)
         'Fizz Buzz'
     elsif (n % 5 == 0)
@@ -9,11 +9,3 @@ def fizz_buxx(n)
         n.to_s
     end
 end
-
-puts(fizz_buxx(1))
-puts(fizz_buxx(3))
-puts(fizz_buxx(5))
-puts(fizz_buxx(15))
-puts(fizz_buxx(33))
-puts(fizz_buxx(40))
-puts(fizz_buxx(30))
