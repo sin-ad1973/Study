@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="button" id="sample" value="送信">
+    <div id="result"></div>
+
+    <script>
+        var ws = new WebSocket('ws://127.0.0.1:5001/test1');
+
+        // サーバーからデータを受け取る
+        ws.onmessage = (message) => {
+            var result = document.getElementById("result");
+            var text = result.innerHTML ? result.innerHTML + "<BR>" + message.data : message.data;
+            result.innerHTML = text;
+            console.log(message.data);
+        };
+        // ws.onmessage = function(message) {
+        //     console.log(message.data);
+        // };
+
+        window.addEventListener('DOMContentLoaded',function(e){
+            // サーバーにデータを送る
+            document.getElementById('sample').addEventListener('click',function(e){
+                ws.send('hello');
+            });
+        });
+    </script>
+</body>
+</html>

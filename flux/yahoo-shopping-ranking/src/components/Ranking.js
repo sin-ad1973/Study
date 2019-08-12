@@ -12,7 +12,7 @@ export default class Ranking extends React.Component {
     }
 
     rankDisp = (() => {
-        const { category, ranking, error } = this.props;
+        const { ranking, error } = this.props;
         if (error) {
             return <p>エラーが発生しました。リロードして下さい。</p>;
         } else if (typeof ranking === 'undefined') {
@@ -26,12 +26,12 @@ export default class Ranking extends React.Component {
 
                             <CardMedia
                              image={item.imageUrl}
-                             tile={`${i + 1}位 ${item.name}`}
+                             title={`${i + 1}位 ${item.name}`}
                              style={{ height: '200px' }}
                             />
 
                             <CardContent>
-                                <Typography tyhpe="title">
+                                <Typography type="title">
                                     {`${i + 1}位 ${item.name}`}
                                 </Typography>
                             </CardContent>
