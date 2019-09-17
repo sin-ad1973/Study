@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js</title>
+        <meta charset="utf-8">
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <p>--- 算出プロパティ ---</p>
+            <div>
+                <input type="text" v-model="width">
+                {{ width }}の半分は{{ halfWidth}}です
+            </div>
+            <div>
+                <input type="text" v-model="halfHeight">
+                {{ height }}の半分は{{ halfHeight }}です
+            </div>
+            <div>
+                <ol>
+                    <!-- 算出プロパティはリアクティブデータが変更されない限り結果がキャッシュされる-->
+                    <li>{{ computedData }}</li>
+                    <li>{{ computedData }}</li>
+                </ol>
+                <ol>
+                    <li>{{ methodsData() }}</li>
+                    <li>{{ methodsData() }}</li>
+                </ol>
+            </div>
+            <div>
+                <input type="text" v-model.number="budget">円以下に絞り込む
+                <input type="text" v-model.number="limit">件を表示
+                <button v-on:click="order=!order">切り替え</button>
+                <p>{{ matched.length }}件中{{ limited.length }}を表示</p>
+                <ul>
+                    <li v-for="item in limited" v-bind:key="item.id">
+                        {{ item.name }} {{ item.price}}円
+                    </li>
+                </ul>
+            </div>
+
+            <p>--- ウォッチャでデータ監視 ---</p>
+            <input type="text" v-model="watchedData">監視データ<br>
+            <input type="text" v-model="listValue">
+            <button v-on:click="changeList">リスト変更監視</button><br>
+            <input type="text" v-model="watchedData2">監視データ2<br>
+            <!-- フォーム監視 -->
+            <select v-model="current">
+                <option v-for="topic in topics" v-bind:value="topic.value">
+                    {{ topic.name }}
+                </option>
+            </select>
+            <div v-for="item in list2">{{ item.full_name }}</div>
+
+            <p>--- フィルタ ---</p>
+            180度は {{ 180 | radian | round }} ラジアンです。
+
+            <p>--- カスタムディレクティブ ---</p>
+            <input v-focus>
+
+            <p>--- 更新後のDOMにアクセス ---</p>
+            <button v-on:click="list3.push(list3.length -1)">追加</button>
+            <ul ref="list">
+                <li v-for="item in list3">{{ item }}</li>
+            </ul>
+
+        </div>
+
+        <script src="../lib/vue.js"></script>
+        <script src="../lib/axios.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
+        <script src="main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js</title>
+        <meta charset="utf-8">
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <!-- テキストのバインディング -->
+            <p>{{message}}</p>
+
+            <!-- 繰り返し -->
+            <ol>
+                <li v-for="item in list">{{item}}</li>
+            </ol>
+
+            <!-- イベント -->
+            <button v-on:click="handleClick">Click</button>
+
+            <!-- フォーム入力との同期 -->
+            <input v-model="message">
+
+            <!-- 条件分岐 -->
+            <p v-if="show">Hello Vue.js!!!</p>
+
+            <!-- トランジション/アニメーション -->
+            <button v-on:click="show2=!show2">切り替え</button>
+            <transition>
+                <p v-if="show2">Hello Vue.js!!!</p>
+            </transition>
+        </div>
+
+        <script src="../lib/vue.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
+        <script src="main.js"></script>
+    </body>
+</html>

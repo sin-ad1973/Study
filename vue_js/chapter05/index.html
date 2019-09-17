@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js</title>
+        <meta charset="utf-8">
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <p>--- コンポーネント ---</p>
+            <my-component></my-component>
+            <my-component2></my-component2>
+
+            <p>--- 親から子への通信(props) ---</p>
+            <ul>
+                <comp-child v-for="item in list"
+                    v-bind:key="item.id"
+                    v-bind:name="item.name"
+                    v-bind:hp="item.hp">
+                </comp-child>
+            </ul>
+
+            <p>--- 子から親への通信(event) ---</p>
+            <!-- comp-child2で'attack'イベントが発火した場合に'handleAttack'メソッドを呼び出す -->
+            <comp-child2 v-for="item in list"
+                v-bind:key="item.id"
+                v-bind="item"
+                v-on:attack="handleAttack">
+            </comp-child2>
+
+            <p>--- スロット ---</p>
+            <comp-child3>実はここがスロットコンテンツ</comp-child3>
+            <comp-child3></comp-child3>
+            <comp-child3>{{ message }}</comp-child3>
+            <comp-child4>
+                <div slot="slot1">名前付きスロット1</div>
+                名前無しスロット
+            </comp-child4>
+            <comp-child5>
+                <p slot-scope="props">
+                    スロットから受け取ったattr　→　{{ props.attr }}
+                </p>
+            </comp-child5>
+
+        </div>
+
+        <script src="../lib/vue.js"></script>
+        <script src="../lib/axios.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
+        <script src="main.js"></script>
+    </body>
+</html>

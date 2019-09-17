@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js</title>
+        <meta charset="utf-8">
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <p>--- 画像ロードイベント</p>
+            <img src="../image/img1.jpg" v-on:load="show=true" v-bind:class="{hide: !show}">
+
+            <p>--- 右クリックイベント</p>
+            <div v-on:click.right="handler">右クリック</div>
+            <div v-on:click.right.prevent="handler">右クリック(オリジナルイベント発生回避)</div>
+
+            <p>--- バブリング回避 ---</p>
+            <div v-on:click="handler('div1')">
+                    div1
+                    <a href="#top" v-on:click="handler('div2')">div2</a>
+            </div>
+            <div v-on:click="handler('div1')">
+                div1
+                <a href="#top" v-on:click.stop="handler('div2')">div2</a>
+            </div>
+
+            <p>--- フォーム入力バインディング ---</p>
+            <div>
+                <textarea v-model="message">{{ message }}</textarea>
+            </div>
+            <div>
+                <input type="checkbox" v-model="val1">
+                <input type="checkbox" v-model="val2" true-value="yes" false-value="no">
+            </div>
+            <div>
+                <input type="checkbox" v-model="val3" value="a">
+                <input type="checkbox" v-model="val3" value="b">
+                <input type="checkbox" v-model="val3" value="c">
+            </div>
+            <div>
+                <input type="radio" v-model="val4" value="a">
+                <input type="radio" v-model="val4" value="b">
+                <input type="radio" v-model="val4" value="c">
+            </div>
+            <div>
+                <select v-model="val5">
+                    <option disabled="disabled">選択して下さい</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="d">c</option>
+                </select>
+            </div>
+            <div>
+                <select v-model="val6" multiple>
+                    <option disabled="disabled">選択して下さい</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                </select>
+            </div>
+            <div>
+                <input type="file" v-on:change="handleChange">
+                <div v-if="preview"><img v-bind:src="preview"></div>
+
+            </div>
+    
+
+        </div>
+
+        <script src="../lib/vue.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
+        <script src="main.js"></script>
+    </body>
+</html>

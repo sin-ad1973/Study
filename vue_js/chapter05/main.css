@@ -1,0 +1,15 @@
+img {
+    opacity: 1;
+    transition: opacity 3s;
+}
+img.hide {
+    opacity: 0;
+}
+
+.comp-child {
+    color: red
+}
+
+.comp-child-slot {
+    color: blue
+}
