@@ -1,0 +1,8 @@
+{
+  "scripts": {
+      "vue": "./node_modules/.bin/vue"
+  },
+  "dependencies": {
+    "vue-cli": "^2.9.6"
+  }
+}
