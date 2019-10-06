@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <!-- Vue.jsの基本 -->
+        <title>Vue.jsの基本</title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@2.5.17"></script>
+        <div id="app">
+            <ul>
+                <li v-for="item in items" v-bind:key="item.name">
+                    <input type="number" v-model="item.quantity" min="0">
+                </li>
+            </ul>
+            <div :style="errorMessageStyle">
+                    <p>{{ items[0].name }}: {{ items[0].price }} ✖ {{ items[0].quantity }}</p>
+                    <p>小計： {{ totalPrice | numberWithDelimiter }}円</p>
+                    <p v-show="!canBuy">
+                        {{ 1000 | numberWithDelimiter }}円以上からご購入いただけます
+                    </p>
+            </div>
+            <button v-bind:disabled="!canBuy" v-on:click="doBuy($event)">購入</button>
+        </div>
+
+        <script>
+            var items = [
+                {
+                    name: '鉛筆',
+                    price: 300,
+                    quantity: 0
+                },
+                {
+                    name: 'ノート',
+                    price: 400,
+                    quantity: 0
+                },
+                {
+                    name: '消しゴム',
+                    price: 500,
+                    quantity: 0
+                }
+            ]
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    items: items,
+                    count: 0,
+                    timerId: null
+                },
+                filters: {
+                    numberWithDelimiter: function (value) {
+                        if (!value) {
+                            return '0'
+                        }
+                        return value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+                    }
+                },
+                computed: {
+                    totalPrice: function() {
+                        return this.items.reduce(function (sum, item) {
+                            return sum + (item.price * item.quantity)
+                        }, 0)
+                    },
+                    totalPriceWithTax: function() {
+                        return Math.floor(this.totalPrice * 1.08)
+                    },
+                    canBuy: function() {
+                        return this.totalPrice >= 1000
+                    },
+                    errorMessageStyle: function() {
+                        return {
+                            border: this.canBuy ? '' : '1px solid red',
+                            color: this.canBuy ? '' : 'red'
+                        }
+                    }
+                },
+                methods: {
+                    doBuy: function(event) {
+                        console.log(event)
+                        alert(`お買上げ：${this.totalPriceWithTax}円(税込)`)
+                    }
+                },
+                created: function() {
+                    console.log('created')
+                    var that = this
+                    console.log(this.count)
+                    console.log(this.$el)
+                    this.timerId = setInterval(function() {
+                        that.count += 1
+                        console.log(that.count)
+                    }, 1000)
+                },
+                mounted: function() {
+                    console.log('mounted')
+                    console.log(this.$el)
+                },
+                beforeDestroy: function() {
+                    console.log('beforeDestry')
+                    clearInterval(this.timerId)
+                }
+            })
+        </script>
+    </body>
+</html>

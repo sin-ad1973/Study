@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <!-- ルーティング基礎 -->
+        <title>ルーティング基礎</title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@2.5.17"></script>
+        <script src="https://unpkg.com/vue-router@3.0.1"></script>
+
+        <div id="app">
+            <router-link to="/top">トップページ</route-link><br/>
+            <router-link to="/users">ユーザー一覧ページ</router-link><br/>
+            <router-link :to="{ name: 'user', params: { userId: 123 } }">ユーザー詳細ページ</router-link><br/><br/>
+            <router-view></router-view>
+        </div>
+
+        <script>
+
+            var router = new VueRouter({
+                // 各ルートにコンポーネントをマッピングします
+                // コンポーネントはVue.extend()によって作られたコンポーネントコンストラクタでも
+                // コンポーネントオプションのオブジェクトでも構いません
+
+                routes: [
+                    {
+                        path: '/top',
+                        component: {
+                            template: '<div>トップページです</div>'
+                        }
+                    },
+                    {
+                        path: '/users',
+                        component: {
+                            template: '<div>ユーザー一覧ページです</div>'
+                        }
+                    },
+                    {
+                        path: '/user/:userId',
+                        name: 'user',
+                        component: {
+                            template: '<div>ユーザーIDは{{ $route.params.userId }}です。</div>'
+                        }
+                    }
+                ]
+            })
+
+            router.beforeEach(function (to, from, next) {
+                // ユーザー一覧ページへアクセスした際に/topへリダイレクトする例
+                if (to.path === '/users') {
+                    next('/top')
+                } else {
+                    // 引数なしでnextを呼び出すと通常通りの遷移が行われる
+                    next()
+                }
+            })
+
+            // ルーターのインスタンスをrootとなるVueインスタンスに渡します
+            new Vue({
+                el: '#app',
+                router
+            })
+
+        </script>
+    </body>
+</html>
