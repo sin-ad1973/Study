@@ -7,7 +7,7 @@
   <body>
       <div id="app3">
           <!-- 定義したカスタムディレクティブを利用する -->
-          <img v-fallback-image src="./logo2.png">
+          <img v-fallback-image.once="noImageURL" src="./logo2.png" :alt="altText">
       </div>
       <script src="app3.js"></script>
   </body>
