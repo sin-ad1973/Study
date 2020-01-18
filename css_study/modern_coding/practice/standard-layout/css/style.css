@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/** ページ共通のCSS設定 *************************** **/
 html {
     font-size: 62.5%;
 }
@@ -9,6 +10,8 @@ body {
     font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
 *, *::before, *::after {
+    /* 全ての要素 + 全ての擬似要素にborder-box指定する
+       (width,height指定がボーダーエリア対象となる */
     box-sizing: border-box;
 }
 a:link, a:visited, a:hover, a:active {
@@ -17,14 +20,21 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .clearfix::after {
+    /* 対象コンテンツのafter擬似要素に
+       float回り込み解除指定する */
     content: '';
     display: block;
     clear: both;
 }
+/** ******************************************** **/
 
+/** header部分のCSS設定 ************************** **/
 .header {
     width: 100%;
+    
+    /* 子要素の位置を指定する */
     padding: 28px 0 10px;
+
     background: url('../images/bg-header.gif') repeat-x;
     box-shadow: 0 0 10px 1px #e3e3e3;
 }
@@ -34,12 +44,17 @@ a:link, a:visited, a:hover, a:active {
     margin: 0 auto;
     background: url('../images/logo.png') no-repeat;
 
-    /* テキスト非表示設定 */
+    /* テキスト非表示設定
+       ・text-indent: 100%でlogo幅分、文字列が右にずれるようにする
+       ・white-space: nowrapで文字列が折り返さないようにする
+       ・overflow: hiddenでlogo幅をはみ出した文字列が表示されないようにする
+     */
     overflow: hidden;
     text-indent: 100%;
     white-space: nowrap;
 }
 .logo a {
+    /* リンク部分が親のlogo要素を全て覆うように幅100%指定する */
     display: block;
     width: 100%;
     height: 100%;
@@ -69,6 +84,7 @@ a:link, a:visited, a:hover, a:active {
     background-color: #d03c56;
     color: #fff;
 }
+/** ******************************************** **/
 
 .wrapper {
     width: 970px;
