@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <ChartBarSample/>
+    <chart-sample/>
   </div>
 </template>
 
 <script>
-import ChartBarSample from './components/ChartBarSample.vue'
+import ChartSample from './components/ChartSample.vue'
 
 export default {
   name: 'app',
   components: {
-    ChartBarSample
+    ChartSample
   }
 }
 </script>

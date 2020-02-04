@@ -1,9 +1,9 @@
 <script>
-import { Bar } from 'vue-chartjs';
+import { HorizontalBar } from 'vue-chartjs';
 
 export default {
-    name: 'ChartBarSample',
-    mixins: [ Bar ],
+    name: 'ChartHBarSample',
+    mixins: [ HorizontalBar ],
     mounted() {
         this.renderChart(this.chartData, this.options);
     },

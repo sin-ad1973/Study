@@ -1,9 +1,9 @@
 <script>
-import { Bar } from 'vue-chartjs';
+import { HorizontalBar } from 'vue-chartjs';
 
 export default {
-    name: 'ChartBarSample',
-    mixins: [ Bar ],
+    name: 'ChartStackHBarSample',
+    mixins: [ HorizontalBar ],
     mounted() {
         this.renderChart(this.chartData, this.options);
     },
@@ -32,18 +32,14 @@ export default {
             options: {
                 title: {
                     display: true,
-                    text: '支店別 来客数'
+                    text: '支店別 来客数(積み上げ)'
                 },
                 scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
                     yAxes: [{
-                        ticks: {
-                            suggestedMax: 100,
-                            suggestedMin: 0,
-                            stepSize: 10,
-                            callback: function(value) {
-                                return  value +  '人'
-                            }
-                        }
+                        stacked: true,
                     }]
                 },
                 legend: {
