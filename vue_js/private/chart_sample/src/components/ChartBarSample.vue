@@ -39,7 +39,7 @@ export default {
                         ticks: {
                             suggestedMax: 100,
                             suggestedMin: 0,
-                            stepSize: 10,
+                            stepSize: 30,
                             callback: function(value) {
                                 return  value +  '人'
                             }
