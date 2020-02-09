@@ -1,0 +1,31 @@
+.DS_Store
+node_modules
+dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# doc
+docs/.vuepress/components
+docs/.vuepress/store
+docs/.vuepress/public/api
+docs/.vuepress/public/locales
+docs/.vuepress/i18n.js
+docs/.vuepress/mixins
+docs/.vuepress/lib
+docs/.vuepress/forms
+docs/.vuepress/helpers
