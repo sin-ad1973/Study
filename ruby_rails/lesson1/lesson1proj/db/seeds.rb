@@ -18,3 +18,8 @@
 @user.location = 'Tottori Japan'
 @user.about = 'Nice to meet you. I am from database!'
 @user.save
+
+@tweet = Tweet.new
+@tweet.title = 'This is first tweet title'
+@tweet.content = 'I am making how to make twitter app.'
+@tweet.save
