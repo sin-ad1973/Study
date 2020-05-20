@@ -11,6 +11,15 @@
 
 <%= form_tag(controller: "hello", action: "index") do %>
     <%= text_field_tag("input1", "", {class:"form-control", value:@value}) %>
+    <%= check_box_tag("check1") %>
+    <%= label_tag("check1", "check box") %>
+    <%= radio_button_tag("r1", "radio 1") %>
+    <%= label_tag("r1_radio_1", "Radio Button 1") %>
+    <%= radio_button_tag("r1", "radio 2") %>
+    <%= label_tag("r1_radio_2", "Radio Button 2") %>
+    <%= select_tag('s1', options_for_select(["Windows", "macOS", "Linux"])) %>
+    <%= select_tag('s2', options_for_select(["Windows", "macOS", "Linuc"]),
+        {size:5, multiple:true, class:"form-control"}) %>
     <%= submit_tag("Click", {class:"btn btn-primary"}) %>
 <% end %>
 

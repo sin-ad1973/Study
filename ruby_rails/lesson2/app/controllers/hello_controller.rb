@@ -32,8 +32,35 @@ class HelloController < ApplicationController
 
         if request.post? then
             @title = 'Result'
-            @msg = 'you typed: ' + params['input1'] + '.'
+            @msg = 'you typed: ' + params['input1'] + '. '
             @value = params['input1']
+
+            if params['check1'] then
+                @msg += 'you checked. '
+            else
+                @msg += 'you not checked... '
+            end
+
+            if params['r1'] then
+                @msg += 'you checked(radio):' + params['r1'] + '. '
+            else
+                @msg += 'you not checked(radio)... '
+            end
+
+            if params['s1'] then
+                @msg += 'you select:' + params['s1'] + '. '
+            else
+                @msg += 'you not select... '
+            end
+
+            if params['s2'] then
+                @msg += 'you select(multi);'
+                for val in params['s2']
+                    @msg += val + ','
+                end
+            else
+                @msg += 'you not select(multi)...'
+            end
         else
             @title = 'index'
             @msg = 'type text...'
