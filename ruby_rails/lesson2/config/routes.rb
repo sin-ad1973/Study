@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   get 'people', to: 'people#index'  #/indexを付けなくてもpeopleだけでアクセスできるようにする
   get 'people/add'
   post 'people/add', to: 'people#create'
+  get 'people/edit/:id', to: 'people#edit'
+  post 'people/edit/:id', to: 'people#update'
+  patch 'people/edit/:id', to: 'people#update'
+  get 'people/delete/:id', to: 'people#delete'
   get 'people/:id', to: 'people#show'
 
   get 'msgboard/index'
