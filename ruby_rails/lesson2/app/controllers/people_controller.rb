@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  layout 'people'
 
   def index
     @msg = 'Person data.'
@@ -16,15 +17,6 @@ class PeopleController < ApplicationController
   end
 
   def create
-    # if request.post? then
-    #   obj = Person.create(
-    #     name: params[:name],
-    #     age: params[:age],
-    #     mail: params[:mail]
-    #   )
-    # end
-    # redirect_to '/people'
-
     if request.post? then
       Person.create(person_params)
     end
@@ -46,6 +38,14 @@ class PeopleController < ApplicationController
     obj = Person.find(params[:id])
     obj.destroy
     redirect_to '/people'
+  end
+
+  def find
+    @msg = 'please type search word...'
+    @people = Array.new
+    if request.post? then
+      @people = Person.where("age >= ?", params[:find])
+    end
   end
   
   private
