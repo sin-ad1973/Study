@@ -44,7 +44,42 @@ class PeopleController < ApplicationController
     @msg = 'please type search word...'
     @people = Array.new
     if request.post? then
-      @people = Person.where("age >= ?", params[:find])
+      # idで検索
+      # @people = Person.find(params[:find])
+
+      # whereで検索1
+      # @people = Person.where(name: params[:find])
+
+      # whereで検索2
+      # @people = Person.where("age >= ?", params[:find])
+
+      # likeで検索
+      # @people = Person.where("name like ?", "%" + params[:find] + "%")
+
+      # AND検索
+      # f = params[:find].split(',')
+      # @people = Person.where("age >= ? and age <= ?", f[0], f[1])
+
+      # OR検索
+      # f = "%" + params[:find] + "%"
+      # @people = Person.where("name like ? or mail like ?", f, f)
+
+      # first, last
+      # f = "%" + params[:find] + "%"
+      # result = Person.where("name like ?", f)
+      # @people.push(result.first)
+      # @people.push(result.last)
+
+      # idで検索(複数) + order
+      # f = "%" + params[:find] + "%"
+      # @people = Person.where('name like ?', f).order 'age asc'
+      
+      # limitとoffset
+      f = params[:find].split(',')
+      @people = Person.all.limit(f[0]).offset(f[1])
+      
+    else
+      @people = Person.all
     end
   end
   
