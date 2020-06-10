@@ -18,7 +18,24 @@ a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
-/** BOX1 *****************************/
+/** HEADER **************************/
+.header {
+    padding: 25px 0px;
+    border-bottom: none;
+    text-align: center;
+}
+.logo {
+    width: 136px;
+    height: 136px;
+    transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+.logo:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+/** BOX *****************************/
 .item {
     width: 180px;
     margin-bottom: 4px;
@@ -26,6 +43,12 @@ a:link, a:visited, a:hover, a:active {
     border-bottom: 3px solid;
     border-radius: 5px;
     background-color: #fff;
+}
+.item-m {
+    width: 364px;
+}
+.item-l {
+    width: 732px;
 }
 .item .image {
     display: block;
