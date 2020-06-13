@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :data_pages
   get 'hello/index'
   get 'hello/login_check'
   devise_for :accounts

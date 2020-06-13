@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ body { font-size: 20px; }
+ .page { padding: 5px; border: 1px lightblue solid; }
+ .first { padding: 5px; border: 1px lightblue solid; }
+ .prev { padding: 5px; border: 1px lightblue solid; }
+ .next { padding: 5px; border: 1px lightblue solid; }
+ .last { padding: 5px; border: 1px lightblue solid; }
+ 
