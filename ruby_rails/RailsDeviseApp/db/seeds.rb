@@ -10,3 +10,5 @@ data = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 
 for i in 1..100 do
     DataPage.create data:data.sample
 end
+
+Blogconfig.create(id:1, title:'my blog', subtitle:'サンプルで作ったブログです。', stylename:'gray')
