@@ -35,6 +35,32 @@ a:link, a:visited, a:hover, a:active {
     transform: rotate(360deg);
 }
 
+/** NAV *****************************/
+.nav {
+    margin: 35px auto 10px;
+}
+.nav-item {
+    margin-top: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.nav-item a {
+    display: inline-block;
+}
+.nav-item a::after {
+    content: '';
+    display: block;
+    width: 0;
+    margin: 6px auto 0;
+    border-bottom: 1px solid #7C5119;
+    transition: width 0.3s ease-in-out;
+}
+.nav-item a:hover::after {
+    width: 100%;
+}
+
 /** BOX *****************************/
 .item {
     width: 180px;
@@ -102,3 +128,4 @@ a:link, a:visited, a:hover, a:active {
 .item-breaktime .category::before {
     border-color: #C1EFFF;
 }
+
