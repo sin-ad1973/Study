@@ -8,7 +8,7 @@
     <tr><th>Message</th><td>
     <% if @data.message != nil then %>
         <% @data.message.each do |obj| %>
-            <%= '「' + obj.title + '」' %>
+            <%= '「' + obj.title + '」' %><br>
         <% end %>
     <% end %>
     </td></tr>
