@@ -1,0 +1,14 @@
+{
+  "name": "clean",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "0.1.19",
+    "webpack": "4.5.0",
+    "webpack-cli": "2.0.14",
+    "webpack-dev-server": "3.1.3"
+  }
+}

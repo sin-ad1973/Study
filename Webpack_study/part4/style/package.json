@@ -1,0 +1,14 @@
+{
+  "name": "style",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "css-loader": "0.28.11",
+    "style-loader": "0.20.3",
+    "webpack": "4.5.0",
+    "webpack-cli": "2.0.14",
+    "webpack-dev-server": "3.1.3"
+  }
+}

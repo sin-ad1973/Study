@@ -1,0 +1,12 @@
+:root {
+  --test1: rgba(0, 0, 0, 0);
+  --test2: rgb(255, 0, 0);
+}
+/* .label { */
+  /* background-color: rgba(0, 0, 0, 0); */
+  /* background: var(--test1); */
+/* } */
+.label:focus {
+  /* background: var(--test2); */
+  background: var(--test2) !important;
+}

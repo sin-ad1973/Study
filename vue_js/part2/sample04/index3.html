@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+  <head>
+      <!-- カスタムディレクティブ -->
+      <title>カスタムディレクティブ</title>
+      <script src="https://unpkg.com/vue@2.5.17"></script>
+  </head>
+  <body>
+      <div id="app3">
+          <!-- 定義したカスタムディレクティブを利用する -->
+          <img v-fallback-image.once="noImageURL" src="./logo2.png" :alt="altText">
+      </div>
+      <script src="app3.js"></script>
+  </body>
+</html>

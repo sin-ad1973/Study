@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <!-- コンポーネントの設計2(ログインフォームコンポーネント) -->
+        <title>コンポーネントの設計2(ログインフォームコンポーネント)</title>
+    </head>
+    <body>        
+        <script src="https://unpkg.com/vue@2.5.17"></script>
+
+        <div id="login-example">
+            <user-login></user-login>
+        </div>
+    
+        <!-- テンプレート -->
+        <script type="text/x-template" id="login-template">
+            <div>
+                <div>
+                    <input type="text" placeholder="ログインID" v-model="userid">
+                </div>
+                <div>
+                    <input type="text" placeholder="パスワード" v-model="password">
+                </div>
+                <button @click="login()">ログイン</button>
+            </div>
+        </script>
+
+        <script>
+            // コンポーネント定義
+            Vue.component('user-login', {
+                template: '#login-template',
+                data: function() {
+                    return {
+                        userid: '',
+                        password: ''
+                    }
+                },
+                methods: {
+                    login: function() {
+                        auth.login(this.userid, this.password)
+                    }
+                }
+            })
+
+            // ログイン周りのダミー
+            var auth = {
+                login: function(userid, password) {
+                    window.alert("userid:" + userid + "\n" + "password:" + password)
+                }
+            }
+
+            new Vue({
+                el: '#login-example'
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js</title>
+        <meta charset="utf-8">
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- v-cloakディレクティブはインスタンスが作成されると削除される -->
+        <div id="app" v-cloak>
+            <p>--- テキストのデータバインディング ---</p>
+            <p>{{ message.value }}</p>
+            <p>{{ message.value.length }}</p>
+            <p>{{ list[2] }}</p>
+            <p>{{ list[num] }}</p>
+            <p>{{ 1 + 1 }}</p>
+
+            <p>--- 属性のデータバインディング ---</p>
+            <input type="text" v-bind:value="message.value">
+            <br>
+            <input type="text" :value="list[0]">
+            <br>
+
+            <p>--- データの更新 ---</p>
+            <button type="button" v-on:click="increment">カウントアップ</button>
+            counter:{{ counter }}
+
+            <p>--- クラスとスタイルのデータバインディング ---</p>
+            <!-- クラスのデータバインディングについて・・・「クラス名:」の後ろの条件を満たせばクラス名が設定される -->
+            <p v-bind:class="{ child: isChild, 'is-active': isActive }">Text</p>
+            <p v-bind:style="{ color: textColor, backgroundColor: bgColor}">Text</p>
+            <p v-bind:class="classObject">Text2</p>
+            <p v-bind:style="styleObject">Text2</p>
+
+            <p>--- 複数の属性のデータバインディング ---</p>
+            <img v-bind="item">
+
+            <p>--- SVGのデータバインディング ---</p>
+            <div id="app">
+                <svg xmilns="http://www.w3.org/2000/svg" version="1.1">
+                    <circle cx="100" cy="75" v-bind:r="radius" fill="lightpink"/>
+                </svg>
+                <input type="range" min="0" max="100" v-model="radius">
+            </div>
+
+            <p>--- 条件分岐 ---</p>
+            <div v-if="ok">v-ifによる条件分岐</div>
+            <div v-show="ok">v-showによる条件分岐</div>
+            <template v-if="ok">
+                <div>test1</div>
+                <div>test2</div>
+            </template>
+
+            <div v-if="type==='A'">
+                A<input type="text" key="input-a">
+            </div>
+            <div v-else-if="type==='B'">
+                B<input type="text" key="input-b">
+            </div>
+
+            <p>--- 配列とリスト, データ更新 ---</p>
+            <p>list</p>
+            <input type="text" placeholder="name" v-model="name">
+            <input type="text" placeholder="hp" v-model="hp">
+            <button v-on:click="addList">リスト追加</button>
+            <ul>
+                <li v-for="item in list" v-bind:key="item.id">
+                    {{ item.id }} | {{ item.name }}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="(item, index) in list" v-bind:key="index">
+                    {{ index }} | {{ item.id }} | {{ item.name }}
+                    <button v-on:click="removeList(index)">削除</button>
+                    <button v-on:click="doAttack(index)">攻撃</button>
+                </li>
+            </ul>
+            <ul>
+                <li v-for="item in list" v-bind:key="item.id" v-bind:class="{ tuyoi: item.hp > 200}">
+                    {{ item.id }} | {{ item.name }} | {{ item.hp }}
+                    <span v-if="item.hp > 200">強い</span>
+                    <span v-else-if="item.hp <= 0">死亡</span>
+                    <span v-else-if="item.hp < 50">瀕死</span>
+                </li>
+            </ul>
+            <p>map</p>
+            <ul>
+                <li v-for="item, key, index) in map">
+                    {{ index }} | {{ key }} | {{ item.name }}
+                </li>
+            </ul>
+            <p>Text</p>
+            <span v-for="item in text">{{ item }}</span>
+
+            <p>--- DOM操作 ---</p>
+            <button v-on:click="handleClick">カウントアップ</button>
+            <button v-on:click="show = !show">表示/非表示</button>
+            <span ref="count" v-if="show">0</span>
+            
+            <!-- 全データ表示
+            <pre>{{ $data }}</pre>
+            -->
+        </div>
+
+        <script src="../lib/vue.js"></script>
+        <script src="../lib/axios.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> -->
+        <script src="main.js"></script>
+    </body>
+</html>

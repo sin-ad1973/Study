@@ -1,0 +1,32 @@
+{
+  "name": "vue-tips-samples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mya-ake/vue-tips-samples.git",
+  "author": "mya-ake <make.app.ts@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "doc:dev": "run-s doc:clean doc:prebuild vuepress:dev",
+    "doc:build": "run-s doc:clean doc:prebuild vuepress:build",
+    "doc:prebuild": "node --experimental-modules build/index.mjs",
+    "doc:clean": "rimraf ./docs/.vuepress/components ./docs/.vuepress/store ./docs/.vuepress/public ./docs/.vuepress/mixins ./docs/.vuepress/lib ./docs/.vuepress/public/forms ./docs/.vuepress/public/helpers",
+    "vuepress:dev": "vuepress dev docs",
+    "vuepress:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue-axios": "^2.1.2",
+    "vue-i18n": "^8.0.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.10",
+    "@vue/cli-service": "^3.0.0-rc.10",
+    "@vue/eslint-config-prettier": "^3.0.0-rc.10",
+    "node-sass": "^4.9.2",
+    "npm-run-all": "^4.1.3",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.1.0",
+    "vuepress": "^0.14.4"
+  }
+}

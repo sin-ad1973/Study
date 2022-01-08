@@ -1,0 +1,2 @@
+module BloggonfigsHelper
+end

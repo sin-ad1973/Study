@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <!-- コンポーネントの設計 -->
+        <title>コンポーネントの設計</title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@2.5.17"></script>
+        <div id="fruits-list">
+            <page-header>
+                <h1 slot="header">夏の果物</h1>
+                <h1 slot="header2">ヒャッホウ</h1>
+            </page-header>
+            <ul>
+                <li>スイカ</li>
+                <li>マンゴー</li>
+            </ul>
+
+        </div>
+
+        <script>
+            var headerTemplate = `
+                <div style="color: gray;">
+                    <slot name="header">※親から何も渡って来ない場合、この文が表示されます</slot>
+                    <slot name="header2">※親から何も渡って来ない場合、この文が表示されます</slot>
+                </div>
+                `
+            Vue.component('page-header', {
+                template: headerTemplate
+            })
+
+            new Vue({
+                el: "#fruits-list"
+            })
+
+        </script>
+    </body>
+</html>

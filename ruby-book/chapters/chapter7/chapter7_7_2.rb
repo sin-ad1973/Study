@@ -1,7 +1,10 @@
 class User
 
     def hello
-        "Hello, #{self.name}."
+        # private methodをself付きで呼び出せない
+        # puts "Hello, #{self.name}."
+        # selfを付けないで呼び出す
+        puts "Hello, #{name}."
     end
 
     private

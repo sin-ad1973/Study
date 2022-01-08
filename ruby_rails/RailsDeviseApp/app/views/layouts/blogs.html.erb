@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsDeviseApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
+    <%= stylesheet_link_tag 'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag @blogconfig.stylename, media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="container">
+    <header id="header">
+      <h1 class="display-4 mb-4"><a href="/blogs"><%= @blogconfig.title %></a></h1>
+      <h2 class="h4 mb-4"><%= @blogconfig.subtitle %></h2>
+    </header>
+    <h4>
+    <div id="side">
+      <% Bloggenre.all.each do |genre| %>
+        <p><a href="/blogs/genre/<%= genre.id %>"><%= genre.name %></a></p>
+      <% end %>
+    </div>
+    <main id="main">
+      <%= yield %>
+    </main>
+  </body>
+</html>
