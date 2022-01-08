@@ -1,7 +1,7 @@
 <template>
-  <div class="hello">
-    <h1 class='msg'>{{ msg2 }}</h1>
-    <button @click="onClick">テスト</button><br>
+  <div class="menu">
+    <!-- <h1 class='msg'>{{ msg2 }}</h1> -->
+    <button @click="onClick">テスト</button>
     <button @click="toPage1">ページ1へ</button>
     <button @click="toPage2">ページ2へ</button>
   </div>
@@ -34,18 +34,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+button {
+  background-color: #fff;
+  border: 1;
+  border-width: 1px;
+  /* border-color: #ccc; */
+  /* border-bottom-color: #ccc; */
+  border-radius: 3px;
+  margin: 1px;
+  padding: 3px;
+  /* min-width: 150px; */
 }
 </style>
