@@ -40,5 +40,11 @@ button {
   border-radius: 3px;
   margin: 1px;
   padding: 3px;
+  transition: 0.3s;
+}
+button:hover {
+  background-color: rgb(255, 123, 0);
+  color: #fff;
+  /* transform: rotate(360deg); */
 }
 </style>

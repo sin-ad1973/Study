@@ -1,8 +1,10 @@
 <template>
   <div id="app" class="clearFix">
-    <div class="header">HEAVEN'S BASE</div>
+    <header class="header">HEAVEN'S BASE</header>
     <Menu class="menu"/>
-    <router-view class="page"></router-view>
+    <main>
+      <router-view class="page"></router-view>
+    </main>
   </div>
 </template>
 
@@ -32,10 +34,13 @@ export default {
   width: 100%;
   text-align: center;
   padding: 10px 0 10px;
-  background-color: #0000ff;
-  color: #ffffff;
+  /* background-color: #0000ff; */
+  color: #333;
   letter-spacing: 1px;
   font-weight: bold;
+  border-bottom: 1px solid #999;
+  background: url(./images/personal.jpeg);
+  background-size: contain;
 }
 .clearFix::after {
   content: '';
@@ -55,5 +60,7 @@ export default {
   width: 80%;
   height: 500px;
   box-sizing: border-box;
+  border: #CCC 1px dashed;
+  border-radius: 10px;
 }
 </style>
