@@ -26,7 +26,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 .header {
   position: absolute;
@@ -34,12 +34,10 @@ export default {
   width: 100%;
   text-align: center;
   padding: 10px 0 10px;
-  /* background-color: #0000ff; */
   color: #333;
   letter-spacing: 1px;
   font-weight: bold;
-  border-bottom: 1px solid #999;
-  background: url(./images/personal.jpeg);
+  /* border-bottom: 1px solid #ccc; */
   background-size: contain;
 }
 .clearFix::after {
@@ -58,7 +56,7 @@ export default {
 .page {
   float: right;
   width: 80%;
-  height: 500px;
+  height: calc(100% - 60px);
   box-sizing: border-box;
   border: #CCC 1px dashed;
   border-radius: 10px;
