@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="clearFix">
     <header class="header">HEAVEN'S BASE</header>
-    <Menu class="menu"/>
+    <Menu />
     <main>
       <router-view class="page"></router-view>
     </main>
@@ -45,17 +45,10 @@ export default {
   display: block;
   clear: both;
 }
-.menu {
-  float: left;
-  padding: 0px 5px 0px;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;  
-}
 .page {
   float: right;
-  width: 80%;
+  width: 79%;
+  margin-left: 5px;
   height: calc(100% - 60px);
   box-sizing: border-box;
   border: #CCC 1px dashed;

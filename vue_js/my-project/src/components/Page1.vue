@@ -19,30 +19,10 @@ export default {
     },
     data() {
         return {
-            icons: [
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-                require('@/images/personal.jpeg'),
-            ],
+            icons: this.$store.state.imageList,
         }
     }
 }
-
-
 </script>
 
 <style scoped>

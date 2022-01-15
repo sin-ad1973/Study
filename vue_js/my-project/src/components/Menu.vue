@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="menu">
     <!-- <h1 class='msg'>{{ msg2 }}</h1> -->
     <button @click="onClick">テスト</button>
     <button @click="toPage1">ページ1へ</button>
@@ -34,10 +34,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.menu {
+  float: left;
+  background-color: #6cf3d4;
+  padding: 5px 5px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;  
+}
 button {
-  background-color: #fff;
-  border-width: 1px;
-  border-radius: 3px;
+  background-color: #0de797;
+  border: 0;
+  /* border-width: 1px;
+  border-radius: 3px; */
   margin: 1px;
   padding: 3px;
   transition: 0.3s;

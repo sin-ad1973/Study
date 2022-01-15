@@ -26,10 +26,17 @@ export default {
     border: #ccc 1px solid;
     border-radius: 5px;
     box-shadow: 5px 5px 5px #ccc;
+    transition: 0.5s;
 }
 .sumnail>img {
     max-width: 100%;
     max-height: 100%;
+}
+.sumnail:hover {
+    /* width: 300px;
+    height: 300px; */
+    transition: 0.5s;
+    opacity: 0.7;
 }
 </style>
 
