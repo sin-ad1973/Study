@@ -1,5 +1,5 @@
 <template>
-    <div class="sumnail" @click="showModal">
+    <div class="modal" @click="closeModal">
         <img :src="iconPath" />
     </div>
 </template>
@@ -7,41 +7,39 @@
 <script>
 
 export default {
-    name: 'Sumnail',
+    name: 'Modal',
     props: {
         iconPath: String,
         name: String,
     },
     methods: {
-        showModal() {
-            this.$emit('show-modal', this.iconPath);
+        closeModal() {
+            this.$emit('close-modal', this.iconPath);
         }
     }
 }
 </script>
 
 <style scoped>
-.sumnail {
-    width: 150px;
-    height: 150px;
+.modal {
+    position: absolute;
+    top: 20;
+    left: 20;
+    z-index: 1;
+    width: 300px;
+    height: 300px;
     padding: 5px;
-    margin: 8px;
     box-sizing: border-box;
     padding: 5px;
     border: #ccc 1px solid;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px #ccc;
+    background-color: #fff;
+    box-shadow: 5px 5px 5px #000;
     transition: 0.5s;
 }
-.sumnail>img {
+.modal>img {
     max-width: 100%;
     max-height: 100%;
-}
-.sumnail:hover {
-    /* width: 300px;
-    height: 300px; */
-    transition: 0.5s;
-    opacity: 0.7;
 }
 </style>
 
