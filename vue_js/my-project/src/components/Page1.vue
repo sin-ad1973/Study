@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div>ページ1</div>
-        <ul class="listLayout">
+        <ul class="listLayout clearFix">
             <li v-for="icon in icons" :key="icon">
                 <Sumnail :icon-path="icon" @show-modal="showModal" />
             </li>
@@ -32,13 +31,23 @@ export default {
     methods: {
         showModal(parameter) {
             this.modalIconPath = parameter;
-           this.isDisplayModal = true;
+            this.isDisplayModal = true;
+        },
+        closeModal() {
+            this.isDisplayModal = false;
+
         }
     }
 }
 </script>
 
 <style scoped>
+.clearFix::after {
+  /* ulのfloatをclear(Modalの高さ100%を有効にするため) */
+  content: '';
+  display: block;
+  clear: both;
+}
 .listLayout {
     list-style: none;
     margin: 0px;

@@ -37,7 +37,6 @@ export default {
   color: #333;
   letter-spacing: 1px;
   font-weight: bold;
-  /* border-bottom: 1px solid #ccc; */
   background-size: contain;
 }
 .clearFix::after {
@@ -46,10 +45,10 @@ export default {
   clear: both;
 }
 .page {
+  position: relative;
   float: right;
   width: 79%;
   margin-left: 5px;
-  height: calc(100% - 60px);
   box-sizing: border-box;
   border: #CCC 1px dashed;
   border-radius: 10px;

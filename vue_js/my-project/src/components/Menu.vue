@@ -48,6 +48,7 @@ button {
   border: 0;
   /* border-width: 1px;
   border-radius: 3px; */
+  color: #fff;
   margin: 1px;
   padding: 3px;
   transition: 0.3s;
