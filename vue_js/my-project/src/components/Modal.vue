@@ -1,11 +1,13 @@
 <template>
     <div class="overlay">
-        <button @click="onClick">test</button>
-        <transition>
-            <div class="modal" @click="closeModal" v-if="isShow">
+        <div class="modal">
+            <div class="header">
+                <button class="close" @click="closeModal">✖️</button>
+            </div>
+            <div class="image">
                 <img :src="iconPath" />
             </div>
-        </transition>
+        </div>
     </div>
 </template>
 
@@ -18,26 +20,19 @@ export default {
         name: String,
     },
     data() {
-        return {
-            isShow: false,
-        }
+        return {}
     },
     methods: {
         closeModal() {
             this.$emit('close-modal', this.iconPath);
         },
-        onClick() {
-            this.isShow = true;   
-        },
     },
-    destroyed() {
-        this.isShow = false;
-    }
+    destroyed() {}
 }
 </script>
 
 <style scoped>
-.v-enter-from {
+/* .v-enter-from {
     opacity: 0;
 }
 .v-enter-to {
@@ -45,7 +40,7 @@ export default {
 }
 .v-enter-active {
     transition: opacity 5s;
-}
+} */
 .overlay {
     /* オーバーレイをpageに被せるためabsolute指定(併せてpageのposition:relativeが必要) */
     position: absolute;
@@ -63,8 +58,7 @@ export default {
     left: 50%;
     z-index: 2;
     width: 300px;
-    height: 300px;
-    padding: 5px;
+    height: 330px;
     box-sizing: border-box;
     border: #ccc 1px solid;
     border-radius: 5px;
@@ -72,7 +66,29 @@ export default {
     box-shadow: 5px 5px 5px #000;
     transform: translate(-50%, -50%);
 }
-.modal>img {
+.header {
+    width: 100%;
+    height: 15px;;
+    padding: 0;
+}
+.close {
+    position: absolute;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    padding: 0;
+    font-size: 0.3rem;
+    border: 0;
+    background-color: #fff;
+}
+.image {
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+}
+.image>img {
     max-width: 100%;
     max-height: 100%;
 }
