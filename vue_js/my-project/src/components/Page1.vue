@@ -50,9 +50,13 @@ export default {
 }
 .listLayout {
     list-style: none;
-    margin: 0px;
+    padding: 7px;
+    margin: auto;
+    box-sizing: border-box;
+    width: 95%;
 }
 .listLayout>li {
     float: left;
+    margin: 7px;
 }
 </style>

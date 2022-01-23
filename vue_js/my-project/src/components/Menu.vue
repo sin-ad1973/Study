@@ -38,10 +38,12 @@ export default {
   float: left;
   background-color: #6cf3d4;
   padding: 5px 5px;
-  width: 20%;
+  width: 19%;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;  
+  box-sizing: border-box;
+  margin: 0px 5px;
+  border-radius: 5px;
 }
 button {
   background-color: #0de797;

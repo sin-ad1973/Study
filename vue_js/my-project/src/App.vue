@@ -48,7 +48,6 @@ export default {
   position: relative;
   float: right;
   width: 79%;
-  margin-left: 5px;
   box-sizing: border-box;
   border: #CCC 1px dashed;
   border-radius: 10px;

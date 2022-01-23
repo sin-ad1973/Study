@@ -25,7 +25,6 @@ export default {
     width: 150px;
     height: 150px;
     padding: 5px;
-    margin: 8px;
     box-sizing: border-box;
     padding: 5px;
     border: #ccc 1px solid;
