@@ -15,11 +15,18 @@ export default function tasksReducer(state = initialState, action) {
             return {
                 ...state, 
                 tasks: state.tasks.concat([{
-                    title: action.payload.task,
+                    title: state.task,
                     id: state.unigueId,
                 }]),
                 unigueId: state.unigueId + 1,
+                task: '',
             };
+        case 'RESET_TASK': 
+          return {
+              ...state,
+              tasks: [],
+              task: '',
+          }
         default: 
             return state;
     }

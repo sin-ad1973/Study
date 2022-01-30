@@ -5,9 +5,10 @@ export const inputTask = (task) => ({
     }
 });
 
-export const addTask = (task) => ({
+export const addTask = () => ({
     type: 'ADD_TASK',
-    payload: {
-        task,
-    }
-})
+});
+
+export const resetTask = () => ({
+    type: 'RESET_TASK',
+});

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
-import { inputTask, addTask } from '../actions/tasks';
+import { inputTask, addTask, resetTask } from '../actions/tasks';
 
 function mapStateToProps({ task, tasks }) {
     return {
@@ -14,9 +14,12 @@ function mapDispatchToProps(dispatch) {
         inputTask(task) {
             dispatch(inputTask(task));
         },
-        addTask(task) {
-            dispatch(addTask(task));
+        addTask() {
+            dispatch(addTask());
         },
+        resetTask() {
+            dispatch(resetTask());
+        }
     }
 }
 
