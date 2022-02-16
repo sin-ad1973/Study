@@ -4,9 +4,14 @@ import './index.css';
 import App from './containers/App';
 import tasksReducer from './reducers/tasks';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
-const store = createStore(tasksReducer);
+const store = createStore(
+  tasksReducer,
+  applyMiddleware(logger, thunk),
+);
 
 render(
   <React.StrictMode>
