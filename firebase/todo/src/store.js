@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import { db } from './firebase/config';
-import { collection, getDocs, addDoc, onSnapshot, query, serverTimestamp, orderBy } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, query, serverTimestamp, orderBy } from 'firebase/firestore';
 
 Vue.use(Vuex);
 
@@ -16,26 +16,10 @@ export default new Vuex.Store({
     },
     actions: {
         /**
-         * get(未使用)
-         * @param {*} context 
-         */
-        async getPosts(context) {
-            const res = await getDocs(collection(db, 'messagelist'));
-            const resMessageList = [];
-            res.forEach((doc) => {
-                resMessageList.push({
-                    id: doc.id,
-                    message: doc.data().message,
-                    createdAt: doc.data().createdAt
-                });
-            })
-            context.commit('setMessage', resMessageList);
-        },
-        /**
          * snabshot
          * @param {*} context 
          */
-        async subscribe(context) {
+        subscribe(context) {
             const q = query(collection(db, 'messagelist'), orderBy('createdAt', 'desc'));
             onSnapshot(q, (querySnapshot) => {
                 const resMessageList = [];
@@ -43,6 +27,7 @@ export default new Vuex.Store({
                     if (doc.data().message) {
                         resMessageList.push({
                             id: doc.id,
+                            title: doc.data().title,
                             message: doc.data().message,
                             createdAt: doc.data().createdAt
                         });
@@ -56,8 +41,9 @@ export default new Vuex.Store({
          * @param {*} context 
          * @param {*} message 
          */
-        async sendPosts(context, message) {
-            await addDoc(collection(db, 'messagelist'), {
+        sendPosts(context, { title, message }) {
+            addDoc(collection(db, 'messagelist'), {
+                title,
                 message,
                 createdAt: serverTimestamp(),
             });

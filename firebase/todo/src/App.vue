@@ -27,7 +27,7 @@ export default {
 }
 .container {
   width: 40%;
-  height: 60%;
+  height: 65%;
   border: solid 1px #ccc;
   border-radius: 10px;
   padding: 5px;

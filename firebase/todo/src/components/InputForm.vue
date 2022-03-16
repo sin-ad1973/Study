@@ -1,7 +1,10 @@
 <template>
   <div class="input-form">
-    <input type="text" v-model="message">
-    <button @click="sendMessage">送信</button>
+    Title
+    <input type="text" v-model="title">
+    Message
+    <textarea v-model="message"></textarea>
+    <button @click="sendMessage">Send</button>
   </div>
 </template>
 
@@ -10,12 +13,13 @@ export default {
   name: 'InputForm',
   data() {
     return {
+      title: '',
       message: '',
     }
   },
   methods: {
     sendMessage() {
-      this.$store.dispatch('sendPosts', this.message);
+      this.$store.dispatch('sendPosts', { title: this.title, message: this.message });
     }
   }
 }
@@ -23,16 +27,36 @@ export default {
 
 <style scoped>
 .input-form {
-  width: 100%;
-  height: 25px;
+  width: 95%;
+  height: 24%;
+  text-align: left;
   position: absolute;
-  bottom: 10px;
+  left: 2.5%;
+  right: 2.5%;
+  bottom: 1%;
+  color: #fff;
+  box-sizing: border-box;
 }
 input {
-  width: calc(90% - 50px);
+  width: 100%;
+  height: 20px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: none;
+}
+textarea {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: none;
 }
 button {
-  margin-left: 5px;
-  width: 45px;
+  width: 50px;
+  height: 25px;
+  background-color: #f00;
+  border-radius: 3px;
+  border: solid 1px #fff;
+  color: #fff;
 }
 </style>

@@ -31,18 +31,17 @@ export default {
 
 <style scoped>
 .message-container {
-  width: 95%;
-  position: absolute;
-  top: 5%;
-  left: 2.5%;
-  right: 2.5%;
-  bottom: 40px;
-  border: dashed 1px #ccd;
-  border-radius: 5px;
-  background-color: #fff;
-  padding: 5px;
-  box-sizing: border-box;
-  overflow: auto;
+    width: 95%;
+    height: 70%;
+    position: absolute;
+    top: 5%;
+    left: 2.5%;
+    right: 2.5%;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: auto;
 }
 .listLayout {
     list-style: none;
