@@ -1,5 +1,5 @@
 <template>
-  <div class="input-form">
+  <div class="input-form clearfix">
     Title
     <input type="text" v-model="title">
     Message
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     sendMessage() {
-      this.$store.dispatch('sendPosts', { title: this.title, message: this.message });
+      this.$store.dispatch('sendMessage', { title: this.title, message: this.message });
     }
   }
 }
@@ -52,11 +52,17 @@ textarea {
   border: none;
 }
 button {
+  float: right;
   width: 50px;
   height: 25px;
   background-color: #f00;
   border-radius: 3px;
   border: solid 1px #fff;
   color: #fff;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 </style>

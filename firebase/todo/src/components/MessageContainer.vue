@@ -10,7 +10,6 @@
 
 <script>
 import MessageItem from './MessageItem.vue';
-import { mapState } from 'vuex';
 
 export default {
   name: 'MessageContainer',
@@ -18,13 +17,12 @@ export default {
     MessageItem,
   },
   computed: {
-    ...mapState({
-      messageList: 'messageList',
-    })
+    messageList() {
+      return this.$store.state.messageList;
+    }
   },
   mounted() {
-    // this.$store.dispatch('getPosts');
-    this.$store.dispatch('subscribe');
+    this.$store.dispatch('subscribeMessage');
   }
 }
 </script>

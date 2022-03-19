@@ -10,38 +10,37 @@ export default new Vuex.Store({
         messageList: [],
     },
     mutations: {
-        setMessage(state, payload) {
+        updateMessageList(state, payload) {
             state.messageList = payload;
         }
     },
     actions: {
         /**
-         * snabshot
+         * 監視
          * @param {*} context 
          */
-        subscribe(context) {
+        subscribeMessage(context) {
+            // クエリ
             const q = query(collection(db, 'messagelist'), orderBy('createdAt', 'desc'));
+            // 監視開始
             onSnapshot(q, (querySnapshot) => {
                 const resMessageList = [];
                 querySnapshot.forEach((doc) => {
                     if (doc.data().message) {
-                        resMessageList.push({
-                            id: doc.id,
-                            title: doc.data().title,
-                            message: doc.data().message,
-                            createdAt: doc.data().createdAt
-                        });
+                        const data =doc.data();
+                        console.log(data);
+                        resMessageList.push({ id: doc.id, ...doc.data() });
                     }
                 });
-                context.commit('setMessage', resMessageList);
+                context.commit('updateMessageList', resMessageList);
             });
         },
         /**
-         * send
+         * 登録
          * @param {*} context 
          * @param {*} message 
          */
-        sendPosts(context, { title, message }) {
+        sendMessage(context, { title, message }) {
             addDoc(collection(db, 'messagelist'), {
                 title,
                 message,

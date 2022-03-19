@@ -1,6 +1,6 @@
 <template>
   <div class="message-item">
-    <div class="header clearFix">
+    <div class="header clearfix">
       <span class="title">◇{{ message.title }}</span>
       <span class="created-at">[{{ this.displayDate }}]</span>
     </div>
@@ -53,7 +53,7 @@ export default {
   float: right;
   vertical-align: bottom;
 }
-.clearFix::after {
+.clearfix::after {
   content: '';
   display: block;
   clear: both;
