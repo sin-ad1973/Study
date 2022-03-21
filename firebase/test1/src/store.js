@@ -16,19 +16,19 @@ export default new Vuex.Store({
     },
     actions: {
         /**
-         * 監視
+         * 更新監視
          * @param {*} context 
          */
         subscribeMessage(context) {
-            // クエリ
-            const q = query(collection(db, 'messagelist'), orderBy('createdAt', 'desc'));
-            // 監視開始
+            // コレクションへの参照取得
+            const collRef = collection(db, 'messagelist');
+            // クエリ生成
+            const q = query(collRef, orderBy('createdAt', 'desc'));
+            // 監視を開始
             onSnapshot(q, (querySnapshot) => {
                 const resMessageList = [];
                 querySnapshot.forEach((doc) => {
                     if (doc.data().message) {
-                        const data =doc.data();
-                        console.log(data);
                         resMessageList.push({ id: doc.id, ...doc.data() });
                     }
                 });
@@ -41,7 +41,10 @@ export default new Vuex.Store({
          * @param {*} message 
          */
         sendMessage(context, { title, message }) {
-            addDoc(collection(db, 'messagelist'), {
+            // コレクションへの参照取得
+            const collRef = collection(db, 'messagelist');
+            // 登録
+            addDoc(collRef, {
                 title,
                 message,
                 createdAt: serverTimestamp(),
