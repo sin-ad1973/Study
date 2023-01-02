@@ -3261,3 +3261,47 @@ Processing by Api::MemosController#index as JSON
 Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 2005)
 
 
+Started GET "/home" for ::1 at 2023-01-02 16:48:31 +0900
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered home/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2542)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 44.2ms | ActiveRecord: 0.0ms | Allocations: 11576)
+
+
+Started GET "/api/memos" for ::1 at 2023-01-02 16:48:32 +0900
+Processing by Api::MemosController#index as JSON
+  Rendering api/memos/index.json.jbuilder
+  [1m[36mMemo Load (2.9ms)[0m  [1m[34mSELECT "memos".* FROM "memos" ORDER BY created_at DESC[0m
+  ↳ app/views/api/memos/index.json.jbuilder:1
+  Rendered api/memos/index.json.jbuilder (Duration: 19.1ms | Allocations: 5173)
+Completed 200 OK in 29ms (Views: 16.2ms | ActiveRecord: 9.4ms | Allocations: 7560)
+
+
+Started POST "/api/memos" for ::1 at 2023-01-02 16:49:51 +0900
+Processing by Api::MemosController#create as JSON
+  Parameters: {"title"=>"Title10", "description"=>"Description10", "memo"=>{"title"=>"Title10", "description"=>"Description10"}}
+Can't verify CSRF token authenticity.
+[31mUnpermitted parameters: :format, :memo[0m
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/memos_controller.rb:8:in `create'
+  [1m[36mMemo Create (86.1ms)[0m  [1m[32mINSERT INTO "memos" ("title", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Title10"], ["description", "Description10"], ["created_at", "2023-01-02 07:49:51.213583"], ["updated_at", "2023-01-02 07:49:51.213583"]]
+  ↳ app/controllers/api/memos_controller.rb:8:in `create'
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/memos_controller.rb:8:in `create'
+  Rendering api/memos/show.json.jbuilder
+  Rendered api/memos/show.json.jbuilder (Duration: 0.7ms | Allocations: 123)
+Completed 201 Created in 100ms (Views: 3.3ms | ActiveRecord: 90.0ms | Allocations: 3382)
+
+
+Started GET "/api/memos" for ::1 at 2023-01-02 16:49:51 +0900
+Processing by Api::MemosController#index as JSON
+  Rendering api/memos/index.json.jbuilder
+  [1m[36mMemo Load (39.6ms)[0m  [1m[34mSELECT "memos".* FROM "memos" ORDER BY created_at DESC[0m
+  ↳ app/views/api/memos/index.json.jbuilder:1
+  Rendered api/memos/index.json.jbuilder (Duration: 41.6ms | Allocations: 1549)
+Completed 200 OK in 42ms (Views: 2.4ms | ActiveRecord: 39.6ms | Allocations: 2059)
+
+
