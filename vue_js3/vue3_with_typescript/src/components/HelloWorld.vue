@@ -1,8 +1,22 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { reactive } from 'vue';
-import { Person } from '../lib/person';
-import { BusinessPerson } from '../lib/business_person';
+import { Person } from '@/lib/person';
+import { BusinessPerson } from '@/lib/business_person';
+import { Triangle } from '@/lib/inherit_abstract';
+import { RectArea } from '@/lib/interface_basic';
+import { ThisAsType } from '@/lib/this_as_type';
+import type { StructPartType } from '@/lib/interface_struct';
+import { StructPartTypeImple } from '@/lib/interface_struct';
+import type { Car } from '@/lib/sig_basic';
+import type { PersonIF } from '@/lib/sig_prop';
+import type { CalculateIF } from '@/lib/sig_call';
+import type { CalculateIFM } from '@/lib/sig_method';
+import type { NumberAssoc } from '@/lib/sig_index';
+import type { ConstRuctSigIF } from '@/lib/sig_construct';
+import { ConstRuctSigIFImple } from '@/lib/sig_construct';
+import type { ObjectliteralIF } from '@/lib/interface_basic';
+import type { ProductKeys } from '@/lib/keyof_basic';
 
 defineProps<{
   msg: string
@@ -19,7 +33,13 @@ const user = reactive({
 // 関数定義
 const onClick = () => { count.value++ };
 
-// --- TypeScript学習用 --------------------------------------
+
+// -----------------------------------------------------------------------------
+// --- TypeScript学習用 ---------------------------------------------------------
+// -----------------------------------------------------------------------------
+// ------------------------------------------------------------
+// 基本
+// ------------------------------------------------------------
 // 型宣言
 let test:number;
 test = 0;
@@ -56,6 +76,9 @@ enum Sex {
 }
 console.log(`Sex.FEMALE:${Sex.FEMALE}`);
 
+// ------------------------------------------------------------
+// 関数
+// ------------------------------------------------------------
 // アロー関数
 let triangle = (height: number, width: number): number => {
   return height * width /2;
@@ -135,6 +158,9 @@ let aliasTest: aliasTaple = ['test1', 0, 'test3'];
 type aliasShared = string | number;
 let aliasTest2: aliasShared = 'test';
 
+// ------------------------------------------------------------
+// クラス・インタフェース・継承
+// ------------------------------------------------------------
 // クラス
 let person: Person = new Person('真', 20);
 console.log(person.show());
@@ -143,10 +169,110 @@ console.log(person.age);
 person.age = 30;
 console.log(person.age);
 
-// クラス継承
-let businessPerson: BusinessPerson = new BusinessPerson('真', 40);
+// クラス継承、オーバーライド
+let businessPerson: BusinessPerson = new BusinessPerson('真', 40, 'SE');
 console.log(businessPerson.show());
 console.log(businessPerson.work());
+
+// 抽象クラス継承
+let triangleObe: Triangle = new Triangle(100, 200);
+console.log(triangleObe.getArea());
+
+// インタフェース実装
+let rectArea: RectArea = new RectArea(500, 500);
+console.log(rectArea.getArea());
+
+// 構造的部分型(interfaceをimplementsしなくても良い場合)
+let structPartType: StructPartType = new StructPartTypeImple(10, 8);
+console.log(structPartType.getArea());
+
+// 型としてのthis
+let thisAsType: ThisAsType = new ThisAsType(10);
+console.log(thisAsType.plus(10).minus(5).value);
+
+// ------------------------------------------------------------
+// 型注釈としてのインタフェース
+// ------------------------------------------------------------
+// 型注釈としてのインタフェース
+let car: Car = {
+  type: 'トラック',
+  run() {
+    console.log(`${this.type}が走ります。`);
+  }
+};
+car.run();
+
+// オブジェクト型リテラル
+let c1: {
+  type: string;
+  weight: number;
+} = {
+  type: '軽トラック',
+  weight: 750
+}
+console.log(c1.weight);
+
+// プロパティシグニチャ
+let p: PersonIF = {
+  name: '田中太郎'
+};
+// 読み取り専用なのでエラーになる
+// p.name = 'テスト';
+
+// コールシグニチャ
+let add: CalculateIF = function(a: number, b: number): number {
+  // 実装
+  return a + b;
+}
+console.log(add(150, 350));
+
+// メソッドシグニチャ
+let calObj: CalculateIFM = {
+  add(a: number, b: number) {
+    return a + b;
+  }
+}
+console.log(calObj.add(250, 350));
+
+// インデックスシグニチャ
+let list: NumberAssoc = {
+  'hundred': 100,
+  'thounsand': 1000,
+};
+console.log(list.hundred);
+
+// コンストラクタシグニチャ
+let constRuctSigIF: ConstRuctSigIF = ConstRuctSigIFImple;
+
+
+// オブジェクトリテラル
+function greet(o: ObjectliteralIF): void {
+  console.log(`こんにちは、${o.name}さん`);
+}
+let objectLiteral1 = {
+  name: '桜',
+  age: 2,
+  gender: 'female' // IFでは未定義
+};
+greet(objectLiteral1);
+greet({
+  name: '花',
+  age: 3,
+  // gender: 'female' // これはエラーになる
+});
+
+// keyofによる切り出し
+function getProp(obj: ProductKeys, name: keyof ProductKeys) {
+  return obj[name];
+};
+let productKeys = {
+  name: 'お弁当',
+  price: 500,
+};
+console.log(getProp(productKeys, 'name'));
+// 以下は存在しないキーを指定しているためエラーになる
+// console.log(getProp(productKeys, 'test'));
+
 
 </script>
 
