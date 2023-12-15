@@ -37,6 +37,7 @@ class MonthExpression implements AbstractExpression {
         if (this.child) {
             this.child.interpret(context);
         }
+        console.log('month ');
         return context;
     }
 }
@@ -56,6 +57,7 @@ class DayExpression implements AbstractExpression {
         if (this.child) {
             this.child.interpret(context);
         }
+        console.log('date ');
         return context;
     }
 }
@@ -75,6 +77,7 @@ class YearExpression implements AbstractExpression {
         if (this.child) {
             this.child.interpret(context);
         }
+        console.log('year ');
         return context;
     }
 }
